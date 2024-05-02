@@ -1,0 +1,118 @@
+<!--
+
+BASIC INFO:
+
+g1 - normal genshin font
+g2 - special genshin font
+
+-->
+<!DOCTYPE html>
+<html>
+<head>
+	<link rel="stylesheet" href="w3.css">
+	<style>
+
+			@font-face { font-family: g1; src: url('genshin1.ttf'); }
+			@font-face { font-family: g2; src: url('genshin2.ttf'); }
+
+			.g1{
+				font-family: g1;
+			}
+
+			.g2{
+				font-family: g2;
+			}
+
+		.header{
+			background-color: #1e2124;
+			color: #b6b6b6;
+			box-shadow: 0px 10px 10px 5px #282b30;
+			}
+
+			.main{
+				color: white;
+				font-size: 130%;
+			}
+
+			
+
+		body{
+			background-color: #36393e;
+			font-family: g1;
+			color: #b6b6b6;
+			user-select: none;
+		}
+
+		.mainText {
+			padding-top: 160px;
+			padding-left: 50px;
+		}
+
+	</style>
+	<meta charset="utf-8">
+	<link rel="stylesheet" href="w3.css">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Genshin Stats Forum</title>
+</head>
+<body class="w3-animate-opacity">
+
+<div class="w3-container header ">
+
+  <h1 class="g2 header-text"><g class="main">GFC&nbsp;&nbsp;</g>forum
+<g class="drop g1">&nbsp;&nbsp;&nbsp;&nbsp;
+<div class="w3-dropdown-hover w3-display-topright" style="font-size: 70%; margin-top: 20px; margin-right: 100px;">
+  <button onhover="drpAn()" class="w3-button w3-gray w3-hover-gray"><g style="color: white;"><a href="frontend.html" style="text-decoration: none;">&nbsp;&nbsp;&nbsp;Menu</a></g></button>
+  <div id="none" class="w3-dropdown-content w3-bar-block w3-animate-zoom">
+    <a href="account.html" class="w3-bar-item w3-button">Account</a>
+    <a href="#" class="w3-bar-item w3-button"><b>Calculator</b></a>
+    <a href="#" class="w3-bar-item w3-button">FAQ</a>
+  </div>
+</g>
+</h1>
+</div>
+
+</div>
+<div class="mainText">
+<h1 class="g1" style="color: white;">Calculator</h1>
+</div>
+
+
+
+
+
+<script>
+
+	console.log("do konzole se neleze lidem 🤓☝");
+	
+
+	function drpAn() {
+  var x = document.getElementById("Demo");
+  if (x.className.indexOf("w3-show") == -1) { 
+    x.className += " w3-show";
+  } else {
+    x.className = x.className.replace(" w3-show", "");
+  }
+}
+</script>
+</body>
+</html>
+
+<!--
+
+info for calc:
+
+if cr<40 = you need crit rate artifacts now.
+
+if CR<65 and CD<120 = both of your crit stats are low, consider upgrading your artifacts
+
+if CR<65 and CD>120 = your crit rate could be higher
+
+if CR<65 and CD>160 = your crit rate is really low, consider upgrading your artifacts
+
+if CR>65 and CD<120 = your crit damage is low, considering upgrading your artifacts
+
+if CR>65 and CD>120 = nice, could have been better tho
+
+if CR>80 and CD>180 = fantastic build
+
+-->
