@@ -234,16 +234,18 @@ if (critRate < 40) {
   message = "You have useless crit rate, anything over 100 doesn't do anything.";
 } else if (critRate < 65 && critDmg < 120) {
   message = "Both of your crit stats are low, consider upgrading your artifacts.";
-} else if (critRate < 65 && critDmg >= 120) {
-  message = "Your crit rate could be higher.";
 } else if (critRate < 65 && critDmg > 150) {
   message = "Your crit rate is really low, consider upgrading your artifacts.";
+} else if (critRate < 65 && critDmg >= 120) {
+  message = "Your crit rate could be higher.";
 } else if (critRate >= 65 && critDmg < 120) {
   message = "Your crit damage is low, consider upgrading your artifacts.";
 } else if (critRate >= 65 && critDmg >= 120 && critRate < 80) {
   message = "Nice, could have been better though.";
 } else if (critRate >= 80 && critDmg <= 150) {
   message = "bittt more crit dmg and its perfect"
+} else if (critRate >= 80 && critDmg >= 210) {
+  message = "GOD fucking tier build!";
 } else if (critRate >= 80 && critDmg >= 150) {
   message = "Fantastic build!";
 } else {
