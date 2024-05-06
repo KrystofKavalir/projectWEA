@@ -107,21 +107,25 @@ g2 - special genshin font
     </div>
   </div>
   
-    <!--
-      <h3>Results</h3>
+    <div class="w3-display-middle g1" id="kktina" style="padding-right: 15%; opacity: 0%">
+      <h3 class="g2" style="color: white;">Results</h3>
       <div id="results">
         <p>Average DMG: <span id="avgDmg"></span></p>
         <p>DMG per 100 hits: <span id="dmgPer100"></span></p>
         <p>Min DMG: <span id="minDmg"></span></p>
         <p>Max DMG: <span id="maxDmg"></span></p>
-        <p>Recommendation*: <span id="recommendation"></span></p>
+        <p>Recommendation*: <span id="rec"></span></p>
       </div>
-  -->  
+  </div>
   
 <style>
 	.calculator {
   
 
+}
+
+#kktina {
+  text-align-last: center;
 }
 
 .calc {
@@ -183,9 +187,15 @@ input {
   50% { box-shadow: 0 0 10px 5px rgba(0, 255, 0, 0.5); background-color: white; color: green;}
   100% { box-shadow: 0 0 0 0 transparent; }
 }
+
+.w {
+  color: white;
+}
 </style>
 
 <script>
+
+  const container = document.getElementById("kktina");
 
 	console.log("do konzole se neleze lidem 🤓☝");
 	
@@ -220,6 +230,16 @@ calculateBtn.addEventListener("click", () => {
   const critRate = parseFloat(critRateInput.value);
   const critDmg = parseFloat(critDmgInput.value);
   const dmgMulti = parseFloat(dmgMultiplierInput.value);
+  const element = document.getElementById("kktina");
+  let opacity = 0; // Start with opacity 0
+    const intervalId = setInterval(() => {
+      if (opacity >= 1) {
+        clearInterval(intervalId);
+      } else {
+        opacity += 0.01; // Increase opacity by 0.1
+        element.style.opacity = opacity;
+      }
+    }, 10);
 
   console.log(baseAtk, extraAtk, critRate, critDmg, dmgMulti);
 
@@ -253,7 +273,24 @@ if (critRate < 40) {
 }
 
 console.log(message);
+ const existingElement = container.querySelector("p.w");
 
+    if (existingElement) {
+      
+      existingElement.remove();
+      const newElement = document.createElement("p");
+      newElement.classList.add("w");
+      const textNode = document.createTextNode(message);
+      newElement.appendChild(textNode);
+      container.appendChild(newElement);
+    } else {
+      // Create a new element with text and class
+      const newElement = document.createElement("p");
+      newElement.classList.add("w");
+      const textNode = document.createTextNode(message);
+      newElement.appendChild(textNode);
+      container.appendChild(newElement);
+    }
 }); 
 </script>
 </body>
