@@ -281,7 +281,7 @@ input {
 <script>
 var UID = 78689798;
 
-	let registered = true; 
+	let registered = false; 
 
 	if (registered === true) {
   accountPage();
@@ -318,7 +318,8 @@ const regPassword2 = document.getElementById("newPasswordConfirm");
 function signin() {
     const enteredUsername = username.value;
     const enteredPassword = password.value;
-
+    registered = true;
+    accountPage();
     console.log("username: " + enteredUsername, "\nsuper secret password: " + enteredPassword);
 }
 
@@ -362,6 +363,9 @@ function easterEggPass() {
 }
 
 function accountPage() {
+		document.getElementById("signin").classList.remove("w3-show");
+	  document.getElementById("signin").classList.add("w3-hide");
+
 		document.getElementById("accountPage").classList.remove("w3-hide");
 	  document.getElementById("accountPage").classList.add("w3-show");
 }
