@@ -81,18 +81,21 @@ g2 - special genshin font
 
 
 	<div class="w3-show w3-display-middle container">
-		<div class="w3-display-topmiddle" style="padding-top: 50px;">
+		<div class="w3-display-topmiddle" style="padding-top: 50px; margin-left: -10%;">
 		 <div class="input-group ">
         <label for="baseAtk">Username:</label>
-        <input type="number" id="baseAtk" style="width: 150%; border-right: 150px;" />
+        <input type="text" id="username" style="width: 170%;" />
       </div>
       <div class="input-group ">
         <label for="extraAtk">Password:</label>
-        <input type="number" id="extraAtk" />
+        <input type="password" id="password" style="width: 170%;"/>
       </div>
      </div> 
-		<button class="w3-button w3-display-middle pulse-button"onclick="move()" style="font-family: g2; font-size: 200%; margin-top: 150px; color: white;">Login</button>
-
+		<button class="w3-button w3-display-middle pulse-button-orange" id="calculateBtn" style="font-family: g2; font-size: 200%; margin-top: 20px; color: white;">Log in</button>
+		<div>
+			<button class="w3-button w3-display-bottommiddle pulse-button" style="font-family: g2; font-size: 200%; margin-bottom: 20px; margin-left: -20%; color: white;">SIGN UP</button>
+			<button class="w3-button w3-display-bottommiddle pulse-button-red" style="font-family: g2; font-size: 130%; margin-bottom: 20px; margin-left: 20%;color: white;">Forgot Password</button>
+		</div>
 
   
 </div>
@@ -137,6 +140,42 @@ input {
   100% { box-shadow: 0 0 0 0 transparent; }
 }
 
+
+
+.pulse-button-red {
+  box-shadow: 0 0 0 0 transparent;
+  transition: box-shadow 1s ease-in-out;
+  border-radius: 30px;
+}
+
+.pulse-button-red:hover {
+  animation: pulse-red 2s infinite;
+  box-shadow: 0 0 0 10px rgba(0, 255, 0, 0.5);
+}
+
+@keyframes pulse-red {
+  0% { box-shadow: 0 0 0 0 transparent; }
+  50% { box-shadow: 0 0 10px 5px red; background-color: #1e2124; color: red;}
+  100% { box-shadow: 0 0 0 0 transparent; }
+}
+
+
+.pulse-button-orange {
+  box-shadow: 0 0 0 0 transparent;
+  transition: box-shadow 1s ease-in-out;
+  border-radius: 30px;
+}
+
+.pulse-button-orange:hover {
+  animation: pulse-orange 2s infinite;
+  box-shadow: 0 0 0 10px rgba(0, 255, 0, 0.5);
+}
+
+@keyframes pulse-orange {
+  0% { box-shadow: 0 0 0 0 transparent; }
+  50% { box-shadow: 0 0 10px 5px #00a2ff; background-color: #1e2124; color: #00a2ff;}
+  100% { box-shadow: 0 0 0 0 transparent; }
+}
 </style>
 
 <script>
@@ -153,19 +192,15 @@ input {
   }
 }
 
-function move() {
-  var elem = document.getElementById("myBar");
-  var width = 1;
-  var id = setInterval(frame, 10);
-  function frame() {
-    if (width >= 100) {
-      clearInterval(id);
-    } else {
-      width++;
-      elem.style.width = width + '%';
-    }
-  }
-}
+const username = document.getElementById("username");
+const password = document.getElementById("password");
+
+calculateBtn.addEventListener("click", () => {
+    const enteredUsername = username.value;
+    const enteredPassword = password.value;
+
+    console.log("username: " + enteredUsername, "\nsuper secret password: " + enteredPassword);
+});
 </script>
 </body>
 </html>
