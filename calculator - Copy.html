@@ -112,7 +112,7 @@ g2 - special genshin font
         <p>Average DMG: <span id="avgDmg" class="w"></span></p>
         <p>DMG per 100 hits: <span id="dmgPer100" class="w"></span></p>
         <p>Min DMG: <span id="minDmg" class="w"></span></p>
-        <p>Max DMG: <span id="maxDmg" class="w"></span></p>
+        <p>Max DMG: <span id="maxDmg" class="w"></span></p> <br>
         <p>Recommendation*: <span id="rec" class="w"></span></p>
       </div>
   </div>
@@ -225,7 +225,7 @@ const dmgMultiplierInput = document.getElementById("dmgMultiplier");
 calculateBtn.addEventListener("click", () => {
   const baseAtk = parseFloat(baseAtkInput.value); 
   const extraAtk = parseFloat(extraAtkInput.value); 
-  const critRate = parseFloat(critRateInput.value);
+  let critRate = parseFloat(critRateInput.value);
   const critDmg = parseFloat(critDmgInput.value);
   const dmgMulti = parseFloat(dmgMultiplierInput.value);
   const element = document.getElementById("kktina");
@@ -241,8 +241,23 @@ calculateBtn.addEventListener("click", () => {
 
   console.log(baseAtk, extraAtk, critRate, critDmg, dmgMulti);
 
-  console.log("critDmg max:" + Math.round(((critDmg  / 100) + 1) * baseAtk));
-  console.log("dmg average:" + Math.round(( baseAtk * (1 + critDmg / 100)) * ( critRate / 100) + ( baseAtk + ( 1 - ( critRate / 100 ) * baseAtk )) - 1));
+  let critDmgMin;
+
+  if(critRate >= 100) {
+    critDmgMin = (Math.round((critDmg  / 100) + 1) * baseAtk);
+    critRate = 100;
+  } else {
+    critDmgMin = (Math.round(baseAtk));
+  }
+
+  const averageDmg = (Math.round(( baseAtk * (1 + critDmg / 100)) * ( critRate / 100) + ( baseAtk + ( 1 - ( critRate / 100 ) * baseAtk )) - 1));
+  const dmgPer100 = (Math.round(100 * (( baseAtk * (1 + critDmg / 100)) * ( critRate / 100) + ( baseAtk + ( 1 - ( critRate / 100 ) * baseAtk )) - 1)));
+  const critDmgMax = (Math.round((critDmg  / 100) + 1) * baseAtk);
+
+  console.log("average dmg: " + averageDmg);
+  console.log("critDmg max:" + critDmgMax);
+  console.log("per 100 hits:" + dmgPer100)
+  console.log("min dmg: " + critDmgMin);
 
   let message;
 
@@ -259,16 +274,21 @@ if (critRate < 40) {
 } else if (critRate >= 65 && critDmg < 120) {
   message = "Your crit damage is low, consider upgrading your artifacts.";
 } else if (critRate >= 65 && critDmg >= 120 && critRate < 80) {
-  message = "Nice, could have been better though.";
+  message = "Nice, pretty decent build.";
 } else if (critRate >= 80 && critDmg <= 150) {
   message = "bittt more crit dmg and its perfect"
-} else if (critRate >= 80 && critDmg >= 210) {
+} else if (critRate >= 80 && critDmg >= 230) {
   message = "GOD fucking tier build!";
 } else if (critRate >= 80 && critDmg >= 150) {
   message = "Fantastic build!";
 } else {
   message = "some shit aint no worky";
 }
+
+document.getElementById('avgDmg').innerHTML = averageDmg.toLocaleString();
+document.getElementById('dmgPer100').innerHTML = dmgPer100.toLocaleString();
+document.getElementById('minDmg').innerHTML = critDmgMin.toLocaleString();
+document.getElementById('maxDmg').innerHTML = critDmgMax.toLocaleString();
 
 console.log(message);
  const existingElement = container.querySelector("p.w");

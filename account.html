@@ -57,6 +57,15 @@ g2 - special genshin font
 			box-shadow: 0px 10px 10px 5px #282b30;
 		}
 
+		.containerBig {
+			width: 90%;
+			height: 70%;
+			border-radius: 30px;
+			background-color: #1e2124;
+			color: #b6b6b6;
+			box-shadow: 0px 10px 10px 5px #282b30;
+		}
+
 	</style>
 	<meta charset="utf-8">
 	<link rel="stylesheet" href="w3.css">
@@ -72,7 +81,7 @@ g2 - special genshin font
   <button onhover="drpAn()" class="w3-button w3-gray w3-hover-gray"><g style="color: white;"><a href="frontend.html" style="text-decoration: none;">&nbsp;&nbsp;&nbsp;Menu</a></g></button>
   <div id="none" class="w3-dropdown-content w3-bar-block w3-animate-zoom">
     <a href="#" class="w3-bar-item w3-button"><b>Account</b></a>
-    <a href="calculator.html" class="w3-bar-item w3-button">Calculator</a>
+    <a href="calculator - copy.html" class="w3-bar-item w3-button">Calculator</a>
     <a href="#" class="w3-bar-item w3-button">FAQ</a>
   </div>
 </g>
@@ -123,10 +132,57 @@ g2 - special genshin font
 </div>
 </div>
 
+<div class="w3-hide" id="accountPage">
+	
+	<div class="w3-show w3-display-middle containerBig" >
+		<button class="myshit back" id="edit" onclick="editAcc()">edit</button>
+		<div class="w3-display-topmiddle" style="padding-top: 50px; margin-left: -10%;">
+			<div class="pfp" style=" ">
+				<img src="xiao.png">
+			</div>
+		 <div class="input-group ">
+		 	<br>
+        <label for="username" class="g2" style="font-size: 200%; color: white;" >Dexy</label>
+        
+      </div>
+      <div class="input-group ">
+        <label for="bio">My very beatiful bio as genshin no lifer</label>
+        
+      </div>
+      <div class="input-group " onclick="copyUID()">
+        <label id="uid" style="width: 33%; height: 130%; background-color: white; color: black; border-radius: 8px; cursor: pointer;"></label>
+        
+      </div>
+     </div> 
+		<!-- <button class="w3-button w3-display-middle pulse-button" id="calculateBtn" onclick="register()" style="font-family: g2; font-size: 200%; margin-top: 120px; color: white;">register</button> -->
+</div>  
+</div>
+</div>
+
+
 
 
 
 <style type="text/css">
+	.pfp {
+  width: 300px;
+  height: 300px;
+  overflow: hidden;
+  position: relative;
+}
+
+.pfp img {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+}
+
+
+
 	.container{
 	  display: inline-block;
 	}
@@ -223,8 +279,22 @@ input {
 </style>
 
 <script>
+var UID = 78689798;
 
-	signinLoad();
+	let registered = true; 
+
+	if (registered === true) {
+  accountPage();
+  console.log("welcome");
+
+	document.getElementById('uid').innerHTML = "&nbsp;#" + UID;
+} else {
+  signinLoad();
+  console.log("register please");
+}
+
+
+	
 
 	console.log("do konzole se neleze lidem 🤓☝");
 	
@@ -288,11 +358,18 @@ function register() {
 
 function easterEggPass() {
 	const enteredUsername = username.value;
-	alert("password for user \"" + enteredUsername + "\" is: " + "heslo")
+	alert("password for user \"" + enteredUsername + "\" is: " + "*heslo*")
 }
 
 function accountPage() {
-	
+		document.getElementById("accountPage").classList.remove("w3-hide");
+	  document.getElementById("accountPage").classList.add("w3-show");
+}
+
+function copyUID() {
+ 		navigator.clipboard.writeText
+		(UID)
+		alert("UID " + UID + " was copied to your clipboard.")
 }
 
 </script>
