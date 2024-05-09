@@ -81,9 +81,63 @@ g2 - special genshin font
 
 
 	<div class="w3-show w3-display-middle container">
-		
-	</div>
+		<div class="w3-display-topmiddle" style="padding-top: 50px;">
+		 <div class="input-group ">
+        <label for="baseAtk">Username:</label>
+        <input type="number" id="baseAtk" style="width: 150%; border-right: 150px;" />
+      </div>
+      <div class="input-group ">
+        <label for="extraAtk">Password:</label>
+        <input type="number" id="extraAtk" />
+      </div>
+     </div> 
+		<button class="w3-button w3-display-middle pulse-button"onclick="move()" style="font-family: g2; font-size: 200%; margin-top: 150px; color: white;">Login</button>
 
+
+  
+</div>
+	</div>
+<style type="text/css">
+	.container{
+	  display: inline-block;
+	}
+
+
+.input-group {
+  margin-bottom: 10px; 
+  font-family: g1;
+}
+
+label {
+  display: block;
+  margin-bottom: 5px; 
+}
+
+input {
+  
+  padding: 8px; 
+  border: 1px solid #ccc;
+  border-radius: 5px; 
+  box-sizing: border-box;
+}
+.pulse-button {
+  box-shadow: 0 0 0 0 transparent;
+  transition: box-shadow 1s ease-in-out;
+  border-radius: 30px;
+}
+
+.pulse-button:hover {
+  animation: pulse 2s infinite;
+  box-shadow: 0 0 0 10px rgba(0, 255, 0, 0.5);
+}
+
+@keyframes pulse {
+  0% { box-shadow: 0 0 0 0 transparent; }
+  50% { box-shadow: 0 0 10px 5px rgba(0, 255, 0, 0.5); background-color: #1e2124; color: green;}
+  100% { box-shadow: 0 0 0 0 transparent; }
+}
+
+</style>
 
 <script>
 
@@ -96,6 +150,20 @@ g2 - special genshin font
     x.className += " w3-show";
   } else {
     x.className = x.className.replace(" w3-show", "");
+  }
+}
+
+function move() {
+  var elem = document.getElementById("myBar");
+  var width = 1;
+  var id = setInterval(frame, 10);
+  function frame() {
+    if (width >= 100) {
+      clearInterval(id);
+    } else {
+      width++;
+      elem.style.width = width + '%';
+    }
   }
 }
 </script>
