@@ -169,22 +169,22 @@ g2 - special genshin font
 		<div class="w3-display-topmiddle" style="padding-top: 50px; margin-left: -10%;">
 		 <div class="input-group ">
         <label for="username">Nickname:</label>
-        <input type="text" id="newUsername" autocomplete="username" style="width: 170%;" />
+        <input type="text" id="newNick" autocomplete="username" style="width: 170%;" />
       </div>
       <div class="input-group ">
         <label for="password">Bio:</label>
-        <input type="password" id="newPassword" autocomplete="new-password" style="width: 170%;"/>
+        <input type="text" id="newBio" autocomplete="new-password" style="width: 170%;"/>
       </div>
       <div class="input-group ">
         <label for="password">UID:</label>
-        <input type="password" id="newPasswordConfirm" autocomplete="new-password" style="width: 170%;"/>
+        <input type="number" id="newUID" autocomplete="new-password" style="width: 170%;"/>
       </div>
             <div class="input-group ">
         <label for="password">Link for profile picture:</label>
-        <input type="password" id="newPasswordConfirm" autocomplete="new-password" style="width: 170%;"/>
+        <input type="text" id="newPfp" autocomplete="new-password" style="width: 170%;"/>
       </div>
      </div> 
-		<button class="w3-button w3-display-middle pulse-button" id="calculateBtn" onclick="register()" style="font-family: g2; font-size: 200%; margin-top: 180px; color: white;">update</button>
+		<button class="w3-button w3-display-middle pulse-button" id="calculateBtn" onclick="register(); update()" style="font-family: g2; font-size: 130%; margin-top: 180px; color: white;">save changes</button>
 </div>  
 </div>
 </div>
@@ -356,16 +356,21 @@ var UID = 78689798;
   }
 }
 
-const username = document.getElementById("username");
-const password = document.getElementById("password");
+var username = document.getElementById("username");
+var password = document.getElementById("password");
 
-const regUsername = document.getElementById("newUsername");
-const regPassword1 = document.getElementById("newPassword");
-const regPassword2 = document.getElementById("newPasswordConfirm");
+var regUsername = document.getElementById("newUsername");
+var regPassword1 = document.getElementById("newPassword");
+var regPassword2 = document.getElementById("newPasswordConfirm");
+
+var updatedNick = document.getElementById("newNick");
+var updatedBio = document.getElementById("newBio");
+var updatedUID = document.getElementById("newUID");
+var updatedPfp = document.getElementById("newPfp");
 
 function signin() {
-    const enteredUsername = username.value;
-    const enteredPassword = password.value;
+    var enteredUsername = username.value;
+    var enteredPassword = password.value;
     registered = true;
     accountPage();
     console.log("username: " + enteredUsername, "\nsuper secret password: " + enteredPassword);
@@ -381,7 +386,10 @@ function signinLoad() {
 	  	  document.getElementById("edit").classList.remove("w3-show");
 	  document.getElementById("edit").classList.add("w3-hide");
 
-
+	  document.getElementById("newNick").value = "";
+    document.getElementById("newBio").value = "";
+    document.getElementById("newUID").value = "";
+    document.getElementById("newPfp").value = "";
 }
 
 function signup() {
@@ -394,9 +402,9 @@ function signup() {
 }
 
 function register() {
-	const newUsername = regUsername.value;
-  const newPassword = regPassword1.value;
-  const newPasswordConfirm = regPassword2.value;
+	var newUsername = regUsername.value;
+  var newPassword = regPassword1.value;
+  var newPasswordConfirm = regPassword2.value;
 
     console.log("username: " + newUsername, "\npassword1: " + newPassword, "\npassword2: " + newPasswordConfirm);
 
@@ -413,7 +421,7 @@ function register() {
 }
 
 function easterEggPass() {
-	const enteredUsername = username.value;
+	var enteredUsername = username.value;
 	alert("password for user \"" + enteredUsername + "\" is: " + "*heslo*")
 }
 
@@ -473,6 +481,38 @@ function copyUID() {
 
 		document.getElementById("signin").classList.remove("w3-hide");
 	  document.getElementById("signin").classList.add("w3-show");
+	}
+
+	function update() {
+    var enteredNick = updatedNick.value;
+    var enteredBio = updatedBio.value;
+    var enteredUID = updatedUID.value;
+    var enteredPfp = updatedPfp.value;
+    console.log(enteredNick + "\n" + enteredBio + "\n" + enteredUID + "\n" + enteredPfp);
+    if (enteredNick.length >= 3) {
+    	console.log("update nick");
+    } else {
+    	console.log("dont update nick");
+    }
+    if (enteredBio.length >= 2) {
+    	console.log("update bio");
+    } else {
+    	console.log("dont update bio");
+    }
+    if (enteredUID.length === 8) {
+    	console.log("update uid");
+    } else {
+    	console.log("dont update uid");
+    }
+    if (enteredPfp.length >= 2) {
+    	console.log("update pfp");
+    } else {
+    	console.log("dont update pfp");
+    }
+    document.getElementById("newNick").value = "";
+    document.getElementById("newBio").value = "";
+    document.getElementById("newUID").value = "";
+    document.getElementById("newPfp").value = "";
 	}
 
 </script>
