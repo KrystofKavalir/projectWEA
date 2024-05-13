@@ -239,20 +239,35 @@ calculateBtn.addEventListener("click", () => {
       }
     }, 10);
 
-  console.log(baseAtk, extraAtk, critRate, critDmg, dmgMulti);
+    if(extraAtk > 0) {
+      var usableAtk = baseAtk + extraAtk;
+    } else {
+      var usableAtk = baseAtk;
+    }
 
+  console.log(baseAtk, extraAtk, critRate, critDmg, dmgMulti);
+ 
   let critDmgMin;
 
   if(critRate >= 100) {
-    critDmgMin = (Math.round((critDmg  / 100) + 1) * baseAtk);
+    critDmgMin = (Math.round(((critDmg  / 100) + 1) * usableAtk));
     critRate = 100;
   } else {
-    critDmgMin = (Math.round(baseAtk));
+    critDmgMin = (Math.round(usableAtk));
   }
 
-  const averageDmg = (Math.round(( baseAtk * (1 + critDmg / 100)) * ( critRate / 100) + ( baseAtk + ( 1 - ( critRate / 100 ) * baseAtk )) - 1));
-  const dmgPer100 = (Math.round(100 * (( baseAtk * (1 + critDmg / 100)) * ( critRate / 100) + ( baseAtk + ( 1 - ( critRate / 100 ) * baseAtk )) - 1)));
-  const critDmgMax = (Math.round((critDmg  / 100) + 1) * baseAtk);
+ 
+
+  var averageDmg = (Math.round((( usableAtk * (1 + critDmg / 100)) * ( critRate / 100) + ( usableAtk + ( 1 - ( critRate / 100 ) * usableAtk )) - 1)));
+  var dmgPer100 = (Math.round((100 * (( usableAtk * (1 + critDmg / 100)) * ( critRate / 100) + ( usableAtk + ( 1 - ( critRate / 100 ) * usableAtk )) - 1))));
+  var critDmgMax = (Math.round(((critDmg  / 100) + 1) * usableAtk));
+
+  if (dmgMulti > 0) {
+    averageDmg = (Math.round(averageDmg * ((dmgMulti / 100) + 1)));
+    dmgPer100 = (Math.round(dmgPer100 * ((dmgMulti / 100) + 1)));
+    critDmgMax = (Math.round(critDmgMax * ((dmgMulti / 100) + 1)));
+    critDmgMin = (Math.round(critDmgMin * ((dmgMulti / 100) + 1)));
+  }
 
   console.log("average dmg: " + averageDmg);
   console.log("critDmg max:" + critDmgMax);
@@ -262,6 +277,8 @@ calculateBtn.addEventListener("click", () => {
   let message;
 if (critRate == 5 && critDmg == 50) {
     message = "Your damage numbers are lower than Paimon's emergency food supply!";
+} else if (critRate < 5) {
+  message = "some shit aint no worky";
 } else if (critRate < 40) {
   message = "You need crit rate artifacts now.";
 } else if (critRate > 100) {
@@ -269,7 +286,7 @@ if (critRate == 5 && critDmg == 50) {
 } else if (critRate < 65 && critDmg < 120) {
   message = "Both of your crit stats are low, consider upgrading your artifacts.";
 } else if (critRate < 65 && critDmg > 150) {
-  message = "Your crit rate is really low, consider upgrading your artifacts.";
+  message = "Your crit rate is kinda low, consider upgrading your artifacts.";
 } else if (critRate < 65 && critDmg >= 120) {
   message = "Your crit rate could be higher.";
 } else if (critRate >= 65 && critDmg < 120) {
