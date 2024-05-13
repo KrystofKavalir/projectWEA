@@ -530,9 +530,6 @@ function accountPage() {
 }
 
 function copyUID() {
-	var copyUID = document.getElementById(UID);
-	//console.log(copyUID.textContent);
-	//UID = copyUID.textContent;
  		navigator.clipboard.writeText
 		(UID)
 		.then(() => {
