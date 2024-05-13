@@ -384,7 +384,7 @@ var UID = 78689798;
 
 var registered = localStorage.getItem("registered") === "true";
 
-localStorage.removeItem("registered");  
+
 
 
 
@@ -434,7 +434,7 @@ var updatedPfp = document.getElementById("newPfp");
 function signin() {
     var enteredUsername = username.value;
     var enteredPassword = password.value;
-    registered = true;
+    localStorage.setItem("registered", true);  
     accountPage();
     console.log("username: " + enteredUsername, "\nsuper secret password: " + enteredPassword);
 }
@@ -482,7 +482,7 @@ function register() {
 
   if (newPassword === newPasswordConfirm) {
     console.log("well done");
-
+    localStorage.setItem("registered", true);  
     accountPage();
 
   } else {
@@ -553,6 +553,9 @@ function copyUID() {
 	}
 
 	function logOut() {
+
+		localStorage.removeItem("registered");  
+
 		document.getElementById("accountPage").classList.remove("w3-show");
 	  document.getElementById("accountPage").classList.add("w3-hide");
 
