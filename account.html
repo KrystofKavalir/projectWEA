@@ -136,17 +136,18 @@ g2 - special genshin font
 	
 	<div class="w3-show w3-display-middle containerBig" >
 		<button class="myshit back" id="edit" onclick="editAcc()">edit</button>
+		<button class="myshit2 back" id="edit" onclick="logOut()">log out</button>
 		<div class="w3-display-topmiddle" style="padding-top: 50px; margin-left: -10%;">
 			<div class="pfp" style=" ">
-				<img src="xiao.png">
+				<img id="pfp">
 			</div>
 		 <div class="input-group ">
 		 	<br>
-        <label for="username" class="g2" style="font-size: 200%; color: white;" >Dexy</label>
+        <label for="username" id="nick" class="g2" style="font-size: 200%; color: white;" ></label>
         
       </div>
       <div class="input-group ">
-        <label for="bio">My very beatiful bio as genshin no lifer</label>
+        <label id="bio" for="bio"></label>
         
       </div>
       <div class="input-group " onclick="copyUID()">
@@ -223,6 +224,23 @@ input {
  color: white;
 }
 
+.myshit2 {
+  font-family: g2;
+  font-size: 150%;
+  margin-top: 10px;
+  color: #b6b6b6;
+  background-color: transparent;
+  border: none;
+  transition: color 0.5s ease;
+  padding-left: 82%;
+  padding-top: 8px;
+  cursor: pointer;
+}
+
+.myshit2:hover {
+ color: white;
+}
+
 .pulse-button {
   box-shadow: 0 0 0 0 transparent;
   transition: box-shadow 1s ease-in-out;
@@ -279,7 +297,11 @@ input {
 </style>
 
 <script>
+var pfp = "./xiao.png";	
+var nick = "Dexy";
+var bio = "My very beatiful bio as genshin no lifer";
 var UID = 78689798;
+
 
 	let registered = false; 
 
@@ -366,15 +388,42 @@ function accountPage() {
 		document.getElementById("signin").classList.remove("w3-show");
 	  document.getElementById("signin").classList.add("w3-hide");
 
+	  document.getElementById("signup").classList.remove("w3-show");
+	  document.getElementById("signup").classList.add("w3-hide");
+
 		document.getElementById("accountPage").classList.remove("w3-hide");
 	  document.getElementById("accountPage").classList.add("w3-show");
+
+
+			document.getElementById("pfp").src = pfp;
+	  	document.getElementById('nick').innerHTML = nick;
+	  	document.getElementById('bio').innerHTML = bio;
+	  	document.getElementById('uid').innerHTML = "&nbsp;#" + UID;
+
 }
 
 function copyUID() {
  		navigator.clipboard.writeText
 		(UID)
-		alert("UID " + UID + " was copied to your clipboard.")
+		.then(() => {
+      alert("UID " + UID + " was copied to your clipboard.");
+    })
 }
+
+	function editAcc() {
+
+	}
+
+		function logOut() {
+		document.getElementById("accountPage").classList.remove("w3-show");
+	  document.getElementById("accountPage").classList.add("w3-hide");
+	  
+	  document.getElementById("signup").classList.remove("w3-show");
+	  document.getElementById("signup").classList.add("w3-hide");
+
+		document.getElementById("signin").classList.remove("w3-hide");
+	  document.getElementById("signin").classList.add("w3-show");
+	}
 
 </script>
 </body>
