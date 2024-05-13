@@ -530,6 +530,9 @@ function accountPage() {
 }
 
 function copyUID() {
+	var copyUID = document.getElementById(UID);
+	//console.log(copyUID.textContent);
+	//UID = copyUID.textContent;
  		navigator.clipboard.writeText
 		(UID)
 		.then(() => {
@@ -592,13 +595,15 @@ function copyUID() {
     if (enteredUID.length === 8) {
     	console.log("update uid");
     	document.getElementById('uid').innerHTML =  "&nbsp;#" + enteredUID;
+    	UID = enteredUID;
+    	
 
     } else {
     	console.log("dont update uid");
     }
     if (enteredPfp.length >= 2) {
     	console.log("update pfp");
-    	document.getElementById('pfp').innerHTML = enteredPfp;
+    	document.getElementById('pfp').src = enteredPfp;
 
     } else {
     	console.log("dont update pfp");
