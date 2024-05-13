@@ -86,7 +86,7 @@ g2 - special genshin font
 <body class="w3-animate-opacity">
 
 <div class="w3-container header ">
-  <h1 class="g2 header-text"><g class="main">GFC&nbsp;&nbsp;</g>forum
+  <h1 onclick="window.location.href='frontend.html'" class="g2 header-text"><g class="main">GFC&nbsp;&nbsp;</g>forum
 <g class="drop g1">&nbsp;&nbsp;&nbsp;&nbsp;
 <div class="w3-dropdown-hover w3-display-topright" style="font-size: 70%; margin-top: 20px; margin-right: 100px;">
   <button onhover="drpAn()" class="w3-button w3-gray w3-hover-gray"><g style="color: white;"><a href="frontend.html" style="text-decoration: none;">&nbsp;&nbsp;&nbsp;Menu</a></g></button>
@@ -110,7 +110,7 @@ g2 - special genshin font
 
 	console.log("Xiao is the best twink ever <3");
 
-	let registered = true; 
+var registered = localStorage.getItem("registered") === "true";
 	
 	if (registered === true) {
   
@@ -136,10 +136,10 @@ g2 - special genshin font
 
 function generateRandomData() {
   const data = [];
-  for (let i = 0; i < 30; i++) {
+  for (let i = 0; i < 100; i++) {
     // Generate random values
     const randomDate = new Date(Date.now() - Math.floor(Math.random() * 86400000) * 90); // 3 months in milliseconds
-    const avgDmg = Math.floor(Math.random() * (9000 - 1500 + 1)) + 1500;
+    const avgDmg = Math.floor(Math.random() * (15000 - 1500)) + 1500;
     const dmgPer100 = avgDmg * 100;
     const maxDmg = Math.floor(avgDmg * 1.25);
     const minDmg = Math.floor(avgDmg * 0.75);
@@ -181,7 +181,7 @@ randomData.forEach((item) => {
 
 function back() {
 	window.location.href = "account.html";
-	localStorage.setItem("registered", true);  
+	
 }
 
 

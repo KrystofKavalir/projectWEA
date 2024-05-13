@@ -98,7 +98,7 @@ g2 - special genshin font
 <body class="w3-animate-opacity" id="body">
 
 <div class="w3-container header ">
-  <h1 class="g2 header-text"><g class="main">GFC&nbsp;&nbsp;</g>forum
+  <h1 onclick="window.location.href='frontend.html'" class="g2 header-text"><g class="main">GFC&nbsp;&nbsp;</g>forum
 <g class="drop g1">&nbsp;&nbsp;&nbsp;&nbsp;
 <div class="w3-dropdown-hover w3-display-topright" style="font-size: 70%; margin-top: 20px; margin-right: 100px;">
   <button onhover="drpAn()" class="w3-button w3-gray w3-hover-gray"><g style="color: white;"><a href="frontend.html" style="text-decoration: none;">&nbsp;&nbsp;&nbsp;Menu</a></g></button>
@@ -399,7 +399,7 @@ var registered = localStorage.getItem("registered") === "true";
 }
 
 	function history() {
-		if (registered === true) {
+		if (registered = localStorage.getItem("registered") === "true") {
 		window.location.href = "data.html";
 	} else {
 		console.log("error, not logged in");
@@ -434,7 +434,7 @@ var updatedPfp = document.getElementById("newPfp");
 function signin() {
     var enteredUsername = username.value;
     var enteredPassword = password.value;
-    localStorage.setItem("registered", true);  
+    localStorage.setItem("registered", true);
     accountPage();
     console.log("username: " + enteredUsername, "\nsuper secret password: " + enteredPassword);
 }
@@ -577,21 +577,29 @@ function copyUID() {
     console.log(enteredNick + "\n" + enteredBio + "\n" + enteredUID + "\n" + enteredPfp);
     if (enteredNick.length >= 3) {
     	console.log("update nick");
+    	document.getElementById('nick').innerHTML = enteredNick;
+
     } else {
     	console.log("dont update nick");
     }
     if (enteredBio.length >= 2) {
     	console.log("update bio");
+    	document.getElementById('bio').innerHTML = enteredBio;
+
     } else {
     	console.log("dont update bio");
     }
     if (enteredUID.length === 8) {
     	console.log("update uid");
+    	document.getElementById('uid').innerHTML =  "&nbsp;#" + enteredUID;
+
     } else {
     	console.log("dont update uid");
     }
     if (enteredPfp.length >= 2) {
     	console.log("update pfp");
+    	document.getElementById('pfp').innerHTML = enteredPfp;
+
     } else {
     	console.log("dont update pfp");
     }
@@ -600,11 +608,6 @@ function copyUID() {
     document.getElementById("newUID").value = "";
     document.getElementById("newPfp").value = "";
 	}
-
-
-
-
-
 
 
 
