@@ -72,6 +72,22 @@ g2 - special genshin font
 			box-shadow: 0px 10px 10px 5px #282b30;
 		}
 
+				#grid-container {
+			width: 80%; 
+			padding-left: 50px;
+    }
+
+    .grid-item {
+    	width: 18%;
+      border: 1px solid #b6b6b6; /* Add a border for each item */
+      padding: 10px; /* Add some padding */
+      margin: 5px; /* Add some margin between items */
+      text-align: center; /* Center the content within items */
+      display: inline-grid;
+      color: white;
+
+    }
+
 	</style>
 	<script src="jquery-3.7.1.min.js"></script>
 	<meta charset="utf-8">
@@ -79,7 +95,7 @@ g2 - special genshin font
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>Genshin Stats Forum</title>
 </head>
-<body class="w3-animate-opacity">
+<body class="w3-animate-opacity" id="body">
 
 <div class="w3-container header ">
   <h1 class="g2 header-text"><g class="main">GFC&nbsp;&nbsp;</g>forum
@@ -95,7 +111,7 @@ g2 - special genshin font
 </h1>
 </div>
 
-<div class="w3-hide" id="signin">
+<div class="w3-hide w3-animate-opacity2" id="signin">
 	<div class="w3-show w3-display-middle container" >
 		<div class="w3-display-topmiddle" style="padding-top: 50px; margin-left: -10%;">
 		 <div class="input-group ">
@@ -116,9 +132,9 @@ g2 - special genshin font
 </div>
 </div>
 
-<div class="w3-hide" id="signup">
+<div class="w3-hide w3-animate-opacity2" id="signup">
 	
-	<div class="w3-show w3-display-middle container" >
+	<div class="w3-show w3-display-middle container " >
 		<button class="myshit back" id="signin" onclick="signinLoad()">←back</button>
 		<div class="w3-display-topmiddle" style="padding-top: 50px; margin-left: -10%;">
 		 <div class="input-group ">
@@ -139,11 +155,12 @@ g2 - special genshin font
 </div>
 </div>
 
-<div class="w3-hide" id="accountPage">
+<div class="w3-hide w3-animate-opacity2" id="accountPage">
 	
 	<div class="w3-show w3-display-middle containerBig" >
 		<button class="myshit back" id="editBut" onclick="editAcc()">edit</button>
 		<button class="myshit2 back" id="logOut" onclick="logOut()">log out</button>
+		<button class="myshit3 back" id="history" onclick="history()">history</button>
 		<div class="w3-display-topmiddle" style="padding-top: 50px; margin-left: -10%;">
 			<div class="pfp" style=" ">
 				<img id="pfp">
@@ -168,7 +185,7 @@ g2 - special genshin font
 </div>
 
 
-<div class="w3-hide" id="edit">
+<div class="w3-hide w3-animate-opacity2" id="edit">
 	
 	<div class="w3-show w3-display-middle container" >
 		<button class="myshit back" id="signin" onclick="signinLoad()">←back</button>
@@ -196,7 +213,19 @@ g2 - special genshin font
 </div>
 
 
+
+
+
+<div class="history w3-hide">
+<div class="mainText">
+<h1 class="g2" style="color: white;">History</h1>
+</div>
+<div id="grid-container" class="g1"></div>
+</div>
+
 <style type="text/css">
+
+
 	.pfp {
   width: 300px;
   height: 300px;
@@ -273,6 +302,23 @@ input {
  color: white;
 }
 
+.myshit3 {
+  font-family: g2;
+  font-size: 150%;
+  margin-top: 10px;
+  color: #b6b6b6;
+  background-color: transparent;
+  border: none;
+  transition: color 0.5s ease;
+  padding-left: 20px;
+  padding-top: 8px;
+  cursor: pointer;
+}
+
+.myshit3:hover {
+ color: white;
+}
+
 .pulse-button {
   box-shadow: 0 0 0 0 transparent;
   transition: box-shadow 1s ease-in-out;
@@ -334,7 +380,12 @@ var nick = "Dexy";
 var bio = "My very beatiful bio as genshin no lifer";
 var UID = 78689798;
 
-let registered = false; 
+
+
+var registered = localStorage.getItem("registered") === "true";
+
+localStorage.removeItem("registered");  
+
 
 
 	if (registered === true) {
@@ -347,7 +398,13 @@ let registered = false;
   console.log("register please");
 }
 
-
+	function history() {
+		if (registered === true) {
+		window.location.href = "data.html";
+	} else {
+		console.log("error, not logged in");
+	}
+	}
 	
 
 	console.log("do konzole se neleze lidem 🤓☝");
@@ -383,6 +440,12 @@ function signin() {
 }
 
 function signinLoad() {
+
+		document.getElementById("newUsername").value = "";
+    document.getElementById("newPassword").value = "";
+    document.getElementById("newPasswordConfirm").value = "";
+
+
 		document.getElementById("signup").classList.remove("w3-show");
 	  document.getElementById("signup").classList.add("w3-hide");
 
@@ -413,6 +476,8 @@ function register() {
   var newPassword = regPassword1.value;
   var newPasswordConfirm = regPassword2.value;
 
+
+
     console.log("username: " + newUsername, "\npassword1: " + newPassword, "\npassword2: " + newPasswordConfirm);
 
   if (newPassword === newPasswordConfirm) {
@@ -433,6 +498,13 @@ function easterEggPass() {
 }
 
 function accountPage() {
+		document.getElementById("username").value = "";
+    document.getElementById("password").value = "";
+
+    document.getElementById("newUsername").value = "";
+    document.getElementById("newPassword").value = "";
+    document.getElementById("newPasswordConfirm").value = "";
+
 		document.getElementById("signin").classList.remove("w3-show");
 	  document.getElementById("signin").classList.add("w3-hide");
 
@@ -451,6 +523,9 @@ function accountPage() {
 	  	document.getElementById('nick').innerHTML = nick;
 	  	document.getElementById('bio').innerHTML = bio;
 	  	document.getElementById('uid').innerHTML = "&nbsp;#" + UID;
+
+	 	 document.getElementById("edit").classList.remove("w3-show");
+	 	 document.getElementById("edit").classList.add("w3-hide");
 
 }
 
@@ -522,6 +597,13 @@ function copyUID() {
     document.getElementById("newUID").value = "";
     document.getElementById("newPfp").value = "";
 	}
+
+
+
+
+
+
+
 
 </script>
 </body>
