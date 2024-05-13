@@ -136,8 +136,8 @@ g2 - special genshin font
 <div class="w3-hide" id="accountPage">
 	
 	<div class="w3-show w3-display-middle containerBig" >
-		<button class="myshit back" id="edit" onclick="editAcc()">edit</button>
-		<button class="myshit2 back" id="edit" onclick="logOut()">log out</button>
+		<button class="myshit back" id="editBut" onclick="editAcc()">edit</button>
+		<button class="myshit2 back" id="logOut" onclick="logOut()">log out</button>
 		<div class="w3-display-topmiddle" style="padding-top: 50px; margin-left: -10%;">
 			<div class="pfp" style=" ">
 				<img id="pfp">
@@ -162,7 +162,32 @@ g2 - special genshin font
 </div>
 
 
-
+<div class="w3-hide" id="edit">
+	
+	<div class="w3-show w3-display-middle container" >
+		<button class="myshit back" id="signin" onclick="signinLoad()">←back</button>
+		<div class="w3-display-topmiddle" style="padding-top: 50px; margin-left: -10%;">
+		 <div class="input-group ">
+        <label for="username">Nickname:</label>
+        <input type="text" id="newUsername" autocomplete="username" style="width: 170%;" />
+      </div>
+      <div class="input-group ">
+        <label for="password">Bio:</label>
+        <input type="password" id="newPassword" autocomplete="new-password" style="width: 170%;"/>
+      </div>
+      <div class="input-group ">
+        <label for="password">UID:</label>
+        <input type="password" id="newPasswordConfirm" autocomplete="new-password" style="width: 170%;"/>
+      </div>
+            <div class="input-group ">
+        <label for="password">Link for profile picture:</label>
+        <input type="password" id="newPasswordConfirm" autocomplete="new-password" style="width: 170%;"/>
+      </div>
+     </div> 
+		<button class="w3-button w3-display-middle pulse-button" id="calculateBtn" onclick="register()" style="font-family: g2; font-size: 200%; margin-top: 180px; color: white;">update</button>
+</div>  
+</div>
+</div>
 
 
 <style type="text/css">
@@ -298,10 +323,10 @@ input {
 </style>
 
 <script>
-var pfp = "";	
-var nick = "";
-var bio = "";
-var UID = "";
+var pfp = "./xiao.png";	
+var nick = "Dexy";
+var bio = "My very beatiful bio as genshin no lifer";
+var UID = 78689798;
 
 
 	let registered = false; 
@@ -353,11 +378,18 @@ function signinLoad() {
 		document.getElementById("signin").classList.remove("w3-hide");
 	  document.getElementById("signin").classList.add("w3-show");
 
+	  	  document.getElementById("edit").classList.remove("w3-show");
+	  document.getElementById("edit").classList.add("w3-hide");
+
+
 }
 
 function signup() {
 		document.getElementById("signup").classList.remove("w3-hide");
 	  document.getElementById("signup").classList.add("w3-show");
+	  	  document.getElementById("edit").classList.remove("w3-show");
+	  document.getElementById("edit").classList.add("w3-hide");
+
 
 }
 
@@ -395,6 +427,10 @@ function accountPage() {
 		document.getElementById("accountPage").classList.remove("w3-hide");
 	  document.getElementById("accountPage").classList.add("w3-show");
 
+	  	  document.getElementById("edit").classList.remove("w3-show");
+	  document.getElementById("edit").classList.add("w3-hide");
+
+
 
 			document.getElementById("pfp").src = pfp;
 	  	document.getElementById('nick').innerHTML = nick;
@@ -412,7 +448,17 @@ function copyUID() {
 }
 
 	function editAcc() {
+		document.getElementById("signin").classList.remove("w3-show");
+	  document.getElementById("signin").classList.add("w3-hide");
 
+	  document.getElementById("signup").classList.remove("w3-show");
+	  document.getElementById("signup").classList.add("w3-hide");
+
+	  document.getElementById("signup").classList.remove("w3-show");
+	  document.getElementById("signup").classList.add("w3-hide");
+
+		document.getElementById("edit").classList.remove("w3-hide");
+	  document.getElementById("edit").classList.add("w3-show");
 	}
 
 	function logOut() {
@@ -421,6 +467,9 @@ function copyUID() {
 
 	  document.getElementById("signup").classList.remove("w3-show");
 	  document.getElementById("signup").classList.add("w3-hide");
+
+	  document.getElementById("edit").classList.remove("w3-show");
+	  document.getElementById("edit").classList.add("w3-hide");
 
 		document.getElementById("signin").classList.remove("w3-hide");
 	  document.getElementById("signin").classList.add("w3-show");
