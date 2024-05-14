@@ -61,6 +61,50 @@ g2 - special genshin font
 			font-size: 170%;
 		}
 
+				#grid-container {
+			width: 80%; 
+			padding-left: 50px;
+    }
+
+    .grid-item {
+    	width: 18%;
+    	height: 30%;
+      border: 1px solid #b6b6b6; 
+      padding: 10px; 
+      margin: 5px; 
+      text-align: center; 
+      display: inline-grid;
+      color: white;
+      border-radius: 10px;
+      box-shadow: 0 0 115px 5px #171a1d, inset 0 0 115px 5px #171a1d;
+      text-shadow: 0 0 10px white;
+
+    }
+
+     .grid-item img {
+      width: 100%;
+      height: auto;
+    }
+
+    .nick {
+    	font-family: g2;
+    	font-size: 130%;
+    }
+
+    .uid {
+    	width: 750%;
+    	
+    	background-color: white;
+    	color: black;
+    	border-radius: 8px;
+    	cursor: pointer;"
+    }
+
+    .bio {
+    	font-size: 80%;
+    	font-weight: lighter;
+    }
+
 	</style>
 	<meta charset="utf-8">
 	<link rel="stylesheet" href="w3.css">
@@ -88,7 +132,7 @@ g2 - special genshin font
 <div class="mainText">
 <h1 class="g2" style="color: white;">Users</h1>
 </div>
-
+<div id="grid-container" class="g1"></div>
 
 
 
@@ -96,6 +140,7 @@ g2 - special genshin font
 
 	console.log("do konzole se neleze lidem 🤓☝");
 	
+
 
 	function drpAn() {
   var x = document.getElementById("none");
@@ -106,7 +151,48 @@ g2 - special genshin font
   }
 }
 
+	const gridContainer = document.getElementById('grid-container');
 
+const preFilledData = {
+  nickname: 'Your Nickname',
+  pfp: 'xiao.png', 
+  uid: '88888888',
+  bio: 'My very beatiful bio as genshin no lifer',
+};
+
+function generateGridItem(data) {
+  const item = document.createElement('div');
+  item.classList.add('grid-item');
+
+  const img = document.createElement('img');
+  img.src = data.pfp;
+  item.appendChild(img);
+
+  const info = document.createElement('div');
+  info.innerHTML = `
+    <p class="nick">${data.nickname}</p>
+    <p>UID: <g class="uid" onclick="copyUID()" id="uid">&nbsp;#${data.uid}&nbsp;&nbsp;</g></p>
+    <p class="bio">${data.bio}</p>
+  `;
+  item.appendChild(info);
+
+  return item;
+}
+
+for (let i = 0; i < 50; i++) {
+  const gridItem = generateGridItem(preFilledData);
+  gridContainer.appendChild(gridItem);
+}
+
+function copyUID() {
+		var uid = document.getElementById("uid");
+ 		navigator.clipboard.writeText
+		(uid)
+		.then(() => {
+      alert("UID " + uid + " was copied to your clipboard.");
+    })
+
+}
 </script>
 </body>
 </html>
