@@ -87,7 +87,7 @@ g2 - special genshin font
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>Genshin Stats Forum</title>
 </head>
-<body class="w3-animate-opacity">
+<body class="w3-animate-opacity" id="body">
 
 <div class="w3-container header ">
   <h1 onclick="window.location.href='frontend.html'" class="g2 header-text"><g class="main">GFC&nbsp;&nbsp;</g>forum
@@ -120,6 +120,7 @@ var registered = localStorage.getItem("registered") === "true";
 	if (registered === true) {
   
   console.log("welcome");
+  
 } else {
   console.log("register please");
   window.location.href = "account.html";
