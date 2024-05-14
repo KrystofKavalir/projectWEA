@@ -217,7 +217,7 @@ function generateGridItem(data) {
   const info = document.createElement('div');
   info.innerHTML = `
     <p class="nick">${data.nickname}</p>
-    <p>UID: <g class="uid" onclick="copyUID()" id="uid">&nbsp;#${data.uid}&nbsp;&nbsp;</g></p>
+    <p>UID: <g class="uid" id="uid">&nbsp;#${data.uid}&nbsp;&nbsp;</g></p>
     <p class="bio">${data.bio}</p>
   `;
   item.appendChild(info);
@@ -230,15 +230,22 @@ for (let i = 0; i < 50; i++) {
   gridContainer.appendChild(gridItem);
 }
 
-function copyUID() {
-		var uid = document.getElementById("uid");
- 		navigator.clipboard.writeText
-		(uid)
-		.then(() => {
-      alert("UID " + uid + " was copied to your clipboard.");
-    })
+const items = document.querySelectorAll("#uid");
 
-}
+items.forEach(item => {
+  item.addEventListener("click", function() {
+  	if (registered === true) {
+    const uid = this.id;
+    navigator.clipboard.writeText(uid)
+      .then(() => {
+        alert("UID " + "" + " was copied to your clipboard.");
+      })
+      .catch(err => {
+        console.error("Failed to copy UID:", err);
+      });
+    } else {}
+  });
+});
 </script>
 </body>
 </html>
