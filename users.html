@@ -41,7 +41,18 @@ g2 - special genshin font
 			font-family: g1;
 			color: #b6b6b6;
 			user-select: none;
+			height: 100%;
+   overflow-y: hidden;
+
 		}
+
+		.no-scroll {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+}
 
 		.mainText {
 			padding-top: 60px;
@@ -105,13 +116,35 @@ g2 - special genshin font
     	font-weight: lighter;
     }
 
+    .log {
+    	filter: blur(8px);
+    }
+
+
+
+    .loge {
+    	font-size: 350%;
+  box-shadow: 0 0 0 0 transparent;
+ 
+    animation: pulse-orange 2s infinite;
+
+}
+
+
+
+@keyframes pulse-orange {
+  0% { text-shadow: 0 0  25px transparent; }
+  50% { text-shadow: 0  0 25px white; }
+  100% { text-shadow: 0  0 25px transparent; }
+}
+
 	</style>
 	<meta charset="utf-8">
 	<link rel="stylesheet" href="w3.css">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>Genshin Stats Forum</title>
 </head>
-<body class="w3-animate-opacity">
+<body class="w3-animate-opacity no-scroll" id="body">
 
 <div class="w3-container header ">
   <h1 onclick="window.location.href='frontend.html'" class="g2 header-text"><g class="main">GFC&nbsp;&nbsp;</g>forum
@@ -129,17 +162,30 @@ g2 - special genshin font
 </div>
 </div>
 
+<div class="log" id="block">
 <div class="mainText">
 <h1 class="g2" style="color: white;">Users</h1>
 </div>
 <div id="grid-container" class="g1"></div>
-
-
+</div>
+<h1 id="loge" class="g1 w3-display-middle loge w3-show" onclick="window.location.href='account.html'">PLEASE LOGIN FIRST</h1>
 
 <script>
 
 	console.log("do konzole se neleze lidem 🤓☝");
 	
+	var registered = localStorage.getItem("registered") === "true";
+	
+	if (registered === true) {
+  document.getElementById("body").classList.remove("no-scroll");
+  document.getElementById("loge").classList.remove("w3-show");
+  document.getElementById("loge").classList.add("w3-hide");
+  document.getElementById("block").classList.remove("log");
+  console.log("welcome");
+} else {
+  console.log("register please");
+  
+}
 
 
 	function drpAn() {
