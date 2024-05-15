@@ -71,7 +71,7 @@ g2 - special genshin font
   <button onhover="drpAn()" class="w3-button w3-gray w3-hover-gray"><g style="color: white;"><a href="frontend.php" style="text-decoration: none;">&nbsp;&nbsp;&nbsp;Menu</a></g></button>
   <div id="none" class="w3-dropdown-content w3-bar-block w3-animate-zoom">
     <a href="account.php" class="w3-bar-item w3-button">Account</a>
-    <a href="#" class="w3-bar-item w3-button"><b>Calculator</b></a>
+    <a href="calculator - copy.php" class="w3-bar-item w3-button"><b>Calculator</b></a>
     <a href="faq.php" class="w3-bar-item w3-button">FAQ</a>
     <a href="users.php" class="w3-bar-item w3-button">Users</a>
   </div>

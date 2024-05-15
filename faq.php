@@ -77,7 +77,7 @@ g2 - special genshin font
   <div id="none" class="w3-dropdown-content w3-bar-block w3-animate-zoom">
     <a href="account.php" class="w3-bar-item w3-button">Account</a>
     <a href="calculator - copy.php" class="w3-bar-item w3-button">Calculator</a>
-    <a href="#" class="w3-bar-item w3-button"><b>FAQ</b></a>
+    <a href="faq.php" class="w3-bar-item w3-button"><b>FAQ</b></a>
     <a href="users.php" class="w3-bar-item w3-button">Users</a>
   </div>
 </g>

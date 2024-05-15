@@ -103,7 +103,7 @@ g2 - special genshin font
 <div class="w3-dropdown-hover w3-display-topright" style="font-size: 70%; margin-top: 20px; margin-right: 100px;">
   <button onhover="drpAn()" class="w3-button w3-gray w3-hover-gray"><g style="color: white;"><a href="frontend.php" style="text-decoration: none;">&nbsp;&nbsp;&nbsp;Menu</a></g></button>
   <div id="none" class="w3-dropdown-content w3-bar-block w3-animate-zoom">
-    <a href="#" class="w3-bar-item w3-button"><b>Account</b></a>
+    <a href="account.php" class="w3-bar-item w3-button"><b>Account</b></a>
     <a href="calculator - copy.php" class="w3-bar-item w3-button">Calculator</a>
     <a href="faq.php" class="w3-bar-item w3-button">FAQ</a>
     <a href="users.php" class="w3-bar-item w3-button">Users</a>
@@ -565,11 +565,12 @@ function copyUID() {
 
 	  document.getElementById("edit").classList.remove("w3-show");
 	  document.getElementById("edit").classList.add("w3-hide");
-
+location.reload()
+.then(() => {
 		document.getElementById("signin").classList.remove("w3-hide");
 	  document.getElementById("signin").classList.add("w3-show");
+})
 
-	  location.reload();
 	}
 
 	function update() {
