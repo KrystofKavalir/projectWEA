@@ -65,15 +65,15 @@ g2 - special genshin font
 
 <div class="w3-container header ">
 
-  <h1 onclick="window.location.href='frontend.html'" class="g2 header-text"><g class="main">GFC&nbsp;&nbsp;</g>forum
+  <h1 onclick="window.location.href='frontend.php'" class="g2 header-text"><g class="main">GFC&nbsp;&nbsp;</g>forum
 <g class="drop g1">&nbsp;&nbsp;&nbsp;&nbsp;
 <div class="w3-dropdown-hover w3-display-topright" style="font-size: 70%; margin-top: 20px; margin-right: 100px;">
-  <button onhover="drpAn()" class="w3-button w3-gray w3-hover-gray"><g style="color: white;"><a href="frontend.html" style="text-decoration: none;">&nbsp;&nbsp;&nbsp;Menu</a></g></button>
+  <button onhover="drpAn()" class="w3-button w3-gray w3-hover-gray"><g style="color: white;"><a href="frontend.php" style="text-decoration: none;">&nbsp;&nbsp;&nbsp;Menu</a></g></button>
   <div id="none" class="w3-dropdown-content w3-bar-block w3-animate-zoom">
-    <a href="account.html" class="w3-bar-item w3-button">Account</a>
+    <a href="account.php" class="w3-bar-item w3-button">Account</a>
     <a href="#" class="w3-bar-item w3-button"><b>Calculator</b></a>
-    <a href="faq.html" class="w3-bar-item w3-button">FAQ</a>
-    <a href="users.html" class="w3-bar-item w3-button">Users</a>
+    <a href="faq.php" class="w3-bar-item w3-button">FAQ</a>
+    <a href="users.php" class="w3-bar-item w3-button">Users</a>
   </div>
 </g>
 </h1>
