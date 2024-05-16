@@ -79,10 +79,10 @@ g2 - special genshin font
 
     .grid-item {
     	width: 18%;
-      border: 1px solid #b6b6b6; /* Add a border for each item */
-      padding: 10px; /* Add some padding */
-      margin: 5px; /* Add some margin between items */
-      text-align: center; /* Center the content within items */
+      border: 1px solid #b6b6b6; 
+      padding: 10px; 
+      margin: 5px; 
+      text-align: center; 
       display: inline-grid;
       color: white;
 
