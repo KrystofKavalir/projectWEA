@@ -161,7 +161,7 @@ g2 - special genshin font
 	<div class="w3-show w3-display-middle containerBig" >
 		<button class="myshit back" id="editBut" onclick="editAcc()">edit</button>
 		<button class="myshit2 back" id="logOut" onclick="logOut()">log out</button>
-		<button class="myshit3 back" id="history" onclick="history()">history</button>
+		<button class="myshit3 back" id="history" onclick="history(); goToData('account')">history</button>
 		<div class="w3-display-topmiddle" style="padding-top: 50px; margin-left: -10%;">
 			<div class="pfp" style=" ">
 				<img id="pfp">
@@ -401,7 +401,7 @@ var registered = localStorage.getItem("registered") === "true";
 
 	function history() {
 		if (registered = localStorage.getItem("registered") === "true") {
-		window.location.href = "data.php";
+		
 	} else {
 		console.log("error, not logged in");
 	}
@@ -438,6 +438,11 @@ function signin() {
     localStorage.setItem("registered", true);
     accountPage();
     console.log("username: " + enteredUsername, "\nsuper secret password: " + enteredPassword);
+}
+
+function goToData(currentPage) {
+  localStorage.setItem("previousPage", currentPage); // Store the current page for back button
+  window.location.href = "data.php"; // Navigate to data.html
 }
 
 function signinLoad() {

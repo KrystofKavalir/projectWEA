@@ -216,7 +216,7 @@ function generateGridItem(data) {
 
   const info = document.createElement('div');
   info.innerHTML = `
-    <p class="nick">${data.nickname}</p>
+    <p class="nick" onclick="goToData('users')">${data.nickname}</p>
     <p>UID: <g class="uid" id="uid">&nbsp;#${data.uid}&nbsp;&nbsp;</g></p>
     <p class="bio">${data.bio}</p>
   `;
@@ -228,6 +228,11 @@ function generateGridItem(data) {
 for (let i = 0; i < 50; i++) {
   const gridItem = generateGridItem(preFilledData);
   gridContainer.appendChild(gridItem);
+}
+
+function goToData(currentPage) {
+  localStorage.setItem("previousPage", currentPage); // Store the current page for back button
+  window.location.href = "data.php"; // Navigate to data.html
 }
 
 const items = document.querySelectorAll("#uid");

@@ -107,7 +107,7 @@ g2 - special genshin font
 </div>
 
 <div class="history w3-hide"></div>
-<div class="mainText" onclick="back()">
+<div class="mainText" onclick="back(); goBack()">
 <h1 class="g2" style="color: white;">←back</h1>
 </div>
 <div id="grid-container" class="g1"></div>
@@ -136,6 +136,16 @@ var registered = localStorage.getItem("registered") === "true";
   }
 }
 
+function goBack() {
+  const previousPage = localStorage.getItem("previousPage");
+  if (previousPage) {
+    window.location.href = previousPage + ".php"; // Add ".html" extension
+    localStorage.removeItem("previousPage"); // Clear storage after use
+  } else {
+    // Handle no previous page scenario (optional)
+    alert("There's no previous page to go back to.");
+  }
+}
 
 
 // HERE I USED AI BUT WE WILL DELETE THIS SHIT AND USE DATABASE DATA INSTEAD.
@@ -186,7 +196,7 @@ randomData.forEach((item) => {
 });
 
 function back() {
-	window.location.href = "account.php";
+	//window.location.href = "account.php";
 	
 }
 
