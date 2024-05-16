@@ -441,8 +441,8 @@ function signin() {
 }
 
 function goToData(currentPage) {
-  localStorage.setItem("previousPage", currentPage); // Store the current page for back button
-  window.location.href = "data.php"; // Navigate to data.html
+  localStorage.setItem("previousPage", currentPage); 
+  window.location.href = "data.php"; 
 }
 
 function signinLoad() {
