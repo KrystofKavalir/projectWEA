@@ -139,8 +139,8 @@ var registered = localStorage.getItem("registered") === "true";
 function goBack() {
   const previousPage = localStorage.getItem("previousPage");
   if (previousPage) {
-    window.location.href = previousPage + ".php"; // Add ".html" extension
-    localStorage.removeItem("previousPage"); // Clear storage after use
+    window.location.href = previousPage + ".php"; 
+    localStorage.removeItem("previousPage"); 
   } else {
     // Handle no previous page scenario (optional)
     alert("There's no previous page to go back to.");
