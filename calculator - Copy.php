@@ -116,8 +116,8 @@ g2 - special genshin font
         <p>Max DMG: <span id="maxDmg" class="w"></span></p> <br>
         <p>Recommendation*: <span id="rec" class="w"></span></p>
       </div>
-  </div>
-  
+  </div> <br>
+  <button id="saveBtn" class="w3-hover-white pulse-button2 w3-hide w3-animate-opacity">SAVE DATA</button>
 <style>
 	.calculator {
   
@@ -171,6 +171,24 @@ input {
   overflow: hidden;
 }
 
+#saveBtn {
+  background-color: #00BFFF;
+  font-family: g1;
+  border: none;
+  color: white;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 10px;
+  overflow: hidden;
+  margin-left: 72px;
+  margin-top: 25px;
+}
+
 .pulse-button {
   box-shadow: 0 0 0 0 transparent;
   transition: box-shadow 1s ease-in-out;
@@ -184,6 +202,22 @@ input {
 @keyframes pulse {
   0% { box-shadow: 0 0 0 0 transparent; }
   50% { box-shadow: 0 0 10px 5px rgba(0, 255, 0, 0.5); background-color: white; color: green;}
+  100% { box-shadow: 0 0 0 0 transparent; }
+}
+
+.pulse-button2 {
+  box-shadow: 0 0 0 0 transparent;
+  transition: box-shadow 1s ease-in-out;
+}
+
+.pulse-button2:hover {
+  animation: pulse1 2s infinite;
+  box-shadow: 0 0 0 10px rgba(0, 255, 0, 0.5);
+}
+
+@keyframes pulse1 {
+  0% { box-shadow: 0 0 0 0 transparent; }
+  50% { box-shadow: 0 0 10px 5px rgba(0, 191, 255, 0.5); background-color: white; color: #00BFFF;}
   100% { box-shadow: 0 0 0 0 transparent; }
 }
 
@@ -221,6 +255,7 @@ const extraAtkInput = document.getElementById("extraAtk");
 const critRateInput = document.getElementById("critRate");
 const critDmgInput = document.getElementById("critDmg");
 const dmgMultiplierInput = document.getElementById("dmgMultiplier");
+let used = false;
 
 
 calculateBtn.addEventListener("click", () => {
@@ -230,6 +265,9 @@ calculateBtn.addEventListener("click", () => {
   const critDmg = parseFloat(critDmgInput.value);
   const dmgMulti = parseFloat(dmgMultiplierInput.value);
   const element = document.getElementById("kktina");
+  used = true;
+  document.getElementById("saveBtn").classList.remove("w3-hide");
+  document.getElementById("saveBtn").classList.add("w3-show");
   let opacity = 0; 
     const intervalId = setInterval(() => {
       if (opacity >= 1) {
@@ -331,6 +369,14 @@ console.log(message);
       container.appendChild(newElement);
     }
 }); 
+
+saveBtn.addEventListener("click", () => {
+  if (used === true) {
+console.log("nice");
+} else {
+  console.log("kkt");
+}
+});
 </script>
 </body>
 </html>
