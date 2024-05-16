@@ -231,8 +231,8 @@ for (let i = 0; i < 50; i++) {
 }
 
 function goToData(currentPage) {
-  localStorage.setItem("previousPage", currentPage); // Store the current page for back button
-  window.location.href = "data.php"; // Navigate to data.html
+  localStorage.setItem("previousPage", currentPage); 
+  window.location.href = "data.php"; 
 }
 
 const items = document.querySelectorAll("#uid");
