@@ -526,9 +526,9 @@ function accountPage() {
 
 
 			document.getElementById("pfp").src = pfp;
-	  	document.getElementById('nick').innerHTML = nick;
-	  	document.getElementById('bio').innerHTML = bio;
-	  	document.getElementById('uid').innerHTML = "&nbsp;#" + UID;
+	  	document.getElementById('nick').innerText = nick;
+	  	document.getElementById('bio').innerText = bio;
+	  	document.getElementById('uid').innerText = "&nbsp;#" + UID;
 
 	 	 document.getElementById("edit").classList.remove("w3-show");
 	 	 document.getElementById("edit").classList.add("w3-hide");
@@ -586,21 +586,21 @@ location.reload()
     console.log(enteredNick + "\n" + enteredBio + "\n" + enteredUID + "\n" + enteredPfp);
     if (enteredNick.length >= 3) {
     	console.log("update nick");
-    	document.getElementById('nick').innerHTML = enteredNick;
+    	document.getElementById('nick').innerText = enteredNick;
 
     } else {
     	console.log("dont update nick");
     }
     if (enteredBio.length >= 2) {
     	console.log("update bio");
-    	document.getElementById('bio').innerHTML = enteredBio;
+    	document.getElementById('bio').innerText = enteredBio;
 
     } else {
     	console.log("dont update bio");
     }
     if (enteredUID.length === 8) {
     	console.log("update uid");
-    	document.getElementById('uid').innerHTML =  "&nbsp;#" + enteredUID;
+    	document.getElementById('uid').innerText =  "&nbsp;#" + enteredUID;
     	UID = enteredUID;
     	
 
