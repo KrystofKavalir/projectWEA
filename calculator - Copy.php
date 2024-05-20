@@ -344,10 +344,10 @@ if (critRate == 5 && critDmg == 50) {
   message = "some shit aint no worky";
 }
 
-document.getElementById('avgDmg').innerHTML = averageDmg.toLocaleString();
-document.getElementById('dmgPer100').innerHTML = dmgPer100.toLocaleString();
-document.getElementById('minDmg').innerHTML = critDmgMin.toLocaleString();
-document.getElementById('maxDmg').innerHTML = critDmgMax.toLocaleString();
+document.getElementById('avgDmg').innerText = averageDmg.toLocaleString();
+document.getElementById('dmgPer100').innerText = dmgPer100.toLocaleString();
+document.getElementById('minDmg').innerText = critDmgMin.toLocaleString();
+document.getElementById('maxDmg').innerText = critDmgMax.toLocaleString();
 
 console.log(message);
  const existingElement = container.querySelector("p.w");
