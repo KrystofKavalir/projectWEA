@@ -37,6 +37,11 @@ g2 - special genshin font
 			font-family: g1;
 			color: #b6b6b6;
 			user-select: none;
+
+		}
+
+		img {
+			pointer-events: none;
 		}
 
 		.mainText {
