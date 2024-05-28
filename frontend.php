@@ -138,11 +138,12 @@ function unMute() {
 }
 
 document.body.addEventListener('click', function() {
-    
+   if (lucky == true) { 
     if (video.muted) {
         video.muted = false;
         video.play();
     }
+   }
 });
 
 
@@ -156,11 +157,13 @@ document.body.addEventListener('click', function() {
 }
 
 var nahoda = 10;
+var lucky = false;
 
 function showVideo() {
   if (Math.random() * 100 <= nahoda) { 
     document.getElementById("video").classList.remove("w3-hide");
-	  
+	  lucky = true;
+	  console.log(lucky);
   }
 }
 
