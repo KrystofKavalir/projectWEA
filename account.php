@@ -528,7 +528,7 @@ function accountPage() {
 			document.getElementById("pfp").src = pfp;
 	  	document.getElementById('nick').innerText = nick;
 	  	document.getElementById('bio').innerText = bio;
-	  	document.getElementById('uid').innerText = "&nbsp;#" + UID;
+	  	document.getElementById('uid').innerHtml = "&nbsp;#" + UID;
 
 	 	 document.getElementById("edit").classList.remove("w3-show");
 	 	 document.getElementById("edit").classList.add("w3-hide");

@@ -11,7 +11,9 @@ g2 - special genshin font
 <head>
 	<link rel="stylesheet" href="w3.css">
 	<style>
-
+::-webkit-scrollbar {
+    display: none;
+}
 			@font-face { font-family: g1; src: url('genshin1.ttf'); }
 			@font-face { font-family: g2; src: url('genshin2.ttf'); }
 
