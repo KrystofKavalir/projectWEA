@@ -83,7 +83,7 @@ g2 - special genshin font
 
 main {
     position: relative;
-    z-index: 1; /* Ensure main content is above the video */
+    z-index: 1; 
 }
 .header{
 			background-color: #1e2124!important;
