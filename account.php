@@ -482,6 +482,18 @@ function register() {
   var newPassword = regPassword1.value;
   var newPasswordConfirm = regPassword2.value;
 
+  var data = JSON.stringify({username: regUsername, password: regPassword1});
+var xhr = new XMLHttpRequest();
+
+xhr.open("POST", "uklDoDtbse.php", true);
+xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+xhr.send("data=" + encodeURIComponent(data));
+
+xhr.onreadystatechange = function() {
+  if (xhr.readyState === 4 && xhr.status === 200) {
+    console.log("Data saved successfully!");
+  }
+};
 
 
     console.log("username: " + newUsername, "\npassword1: " + newPassword, "\npassword2: " + newPasswordConfirm);
