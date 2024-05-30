@@ -23,13 +23,11 @@ g2 - special genshin font
 				font-family: g2;
 			}
 
-		
 
 			.main{
 				color: white;
 				font-size: 130%;
 			}
-
 			
 
 		body{
