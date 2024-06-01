@@ -482,7 +482,7 @@ function register() {
   var newPassword = regPassword1.value;
   var newPasswordConfirm = regPassword2.value;
 
-  var data = JSON.stringify({username: newUsername, password: newPassword});
+  var data = JSON.stringify({username: newUsername, password: newPassword, password2: newPasswordConfirm});
 var xhr = new XMLHttpRequest();
 
 xhr.open("POST", "uklDoDtbse.php", true);
