@@ -485,6 +485,15 @@ function register() {
   var data = JSON.stringify({username: newUsername, password: newPassword, password2: newPasswordConfirm});
 var xhr = new XMLHttpRequest();
 
+
+
+
+    console.log("username: " + newUsername, "\npassword1: " + newPassword, "\npassword2: " + newPasswordConfirm);
+
+  if (newPassword === newPasswordConfirm) {
+    console.log("well done");
+    localStorage.setItem("registered", true);  
+    accountPage();
 xhr.open("POST", "uklDoDtbse.php", true);
 xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
 xhr.send("data=" + encodeURIComponent(data));
@@ -494,15 +503,6 @@ xhr.onreadystatechange = function() {
     console.log("Data saved successfully!");
   }
 };
-
-
-    console.log("username: " + newUsername, "\npassword1: " + newPassword, "\npassword2: " + newPasswordConfirm);
-
-  if (newPassword === newPasswordConfirm) {
-    console.log("well done");
-    localStorage.setItem("registered", true);  
-    accountPage();
-
   } else {
     console.log("idiot");
     document.getElementById("newPasswordConfirm").value = "";
@@ -612,7 +612,7 @@ location.reload()
     }
     if (enteredUID.length === 8) {
     	console.log("update uid");
-    	document.getElementById('uid').innerText =  "&nbsp;#" + enteredUID;
+    	document.getElementById('uid').innerHTML =  "&nbsp;#" + enteredUID;
     	UID = enteredUID;
     	
 
