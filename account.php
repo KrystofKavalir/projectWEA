@@ -482,17 +482,19 @@ function register() {
   var newPassword = regPassword1.value;
   var newPasswordConfirm = regPassword2.value;
 
-  var data = JSON.stringify({username: newUsername, password: newPassword, password2: newPasswordConfirm});
-var xhr = new XMLHttpRequest();
+
 
 
 
 
     console.log("username: " + newUsername, "\npassword1: " + newPassword, "\npassword2: " + newPasswordConfirm);
-
-  if (newPassword === newPasswordConfirm) {
+if (newPassword < 5 || newUsername < 5) {
+	alert("Your username and password requires at least 5 characters");
+} else if (newPassword === newPasswordConfirm) {
     console.log("well done");
-    localStorage.setItem("registered", true);  
+    localStorage.setItem("registered", true);
+        var data = JSON.stringify({username: newUsername, password: newPassword, password2: newPasswordConfirm});
+var xhr = new XMLHttpRequest();
     accountPage();
 xhr.open("POST", "uklDoDtbse.php", true);
 xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
