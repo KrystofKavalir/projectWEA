@@ -137,7 +137,7 @@ g2 - special genshin font
         <p>Recommendation*: <span id="rec" class="w"></span></p>
       </div>
   </div> <br>
-  <button id="saveBtn" class="w3-hover-white pulse-button2 w3-hide w3-animate-opacity">SAVE DATA</button>
+  <button id="saveBtn" class="w3-hover-white pulse-button2 w3-hide w3-animate-opacity" onclick="saving()">SAVE DATA</button>
 </div>
  <h1 id="loge" class="g1 w3-display-middle loge w3-show" onclick="window.location.href='account.php'">PLEASE LOGIN FIRST</h1>
 <style>
@@ -250,7 +250,10 @@ input {
 
 <script>
   var registered = localStorage.getItem("registered") === "true";
-  
+  var uziId = localStorage.getItem("spId");
+  var shouldSave = false;
+  console.log(uziId);
+
   if (registered === true) {
   document.getElementById("body").classList.remove("no-scroll");
   document.getElementById("loge").classList.remove("w3-show");
@@ -274,6 +277,11 @@ $(document).ready(function() {
     }, 450);
   });
 });
+
+
+ function saving() {
+ 
+}
 
 	function drpAn() {
   var x = document.getElementById("Demo");
@@ -300,8 +308,8 @@ calculateBtn.addEventListener("click", () => {
   const dmgMulti = parseFloat(dmgMultiplierInput.value);
   const element = document.getElementById("kktina");
   used = true;
-  document.getElementById("saveBtn").classList.remove("w3-hide");
-  document.getElementById("saveBtn").classList.add("w3-show");
+  /*document.getElementById("saveBtn").classList.remove("w3-hide");
+  document.getElementById("saveBtn").classList.add("w3-show");*/
   let opacity = 0; 
     const intervalId = setInterval(() => {
       if (opacity >= 1) {
@@ -349,32 +357,46 @@ calculateBtn.addEventListener("click", () => {
 
   let message;
 if (critRate == 5 && critDmg == 50) {
+    var shouldSave = true;
     message = "Your damage numbers are lower than Paimon's emergency food supply!";
 } else if (critRate < 5) {
+  var shouldSave = true;
   message = "some shit aint no worky";
 } else if (critRate < 40) {
+  var shouldSave = true;
   message = "You need crit rate artifacts now.";
 } else if (critRate > 100) {
+  var shouldSave = true;
   message = "You have useless crit rate, anything over 100 doesn't do anything.";
 } else if (critRate < 65 && critDmg < 120) {
+  var shouldSave = true;
   message = "Both of your crit stats are low, consider upgrading your artifacts.";
 } else if (critRate < 65 && critDmg > 150) {
+  var shouldSave = true;
   message = "Your crit rate is kinda low, consider upgrading your artifacts.";
 } else if (critRate < 65 && critDmg >= 120) {
+  var shouldSave = true;
   message = "Your crit rate could be higher.";
 } else if (critRate >= 65 && critDmg < 120) {
+  var shouldSave = true;
   message = "Your crit damage is low, consider upgrading your artifacts.";
 } else if (critRate >= 65 && critDmg >= 120 && critRate < 80) {
+  var shouldSave = true;
   message = "Nice, pretty decent build.";
 } else if (critRate >= 80 && critDmg <= 150) {
+  var shouldSave = true;
   message = "bittt more crit dmg and its perfect"
 } else if (critRate >= 80 && critDmg >= 230) {
+  var shouldSave = true;
   message = "GOD fucking tier build!";
 } else if (critRate >= 80 && critDmg >= 150) {
+  var shouldSave = true;
   message = "Fantastic build!";
 } else if (critRate == 0 && critDmg == 0) {
+  var shouldSave = true;
   message = "Your damage numbers are lower than Paimon's emergency food supply!";
 } else {
+  var shouldSave = false;
   message = "some shit aint no worky";
 }
 
@@ -382,6 +404,24 @@ document.getElementById('avgDmg').innerText = averageDmg.toLocaleString();
 document.getElementById('dmgPer100').innerText = dmgPer100.toLocaleString();
 document.getElementById('minDmg').innerText = critDmgMin.toLocaleString();
 document.getElementById('maxDmg').innerText = critDmgMax.toLocaleString();
+
+if (shouldSave === true) {
+ 
+var data = JSON.stringify({minDmg: critDmgMin, maxDmg: critDmgMax, avgDmg: averageDmg, dmgPer100: dmgPer100, uziId: uziId});
+var xhr = new XMLHttpRequest();
+   
+xhr.open("POST", "uklDoData.php", true);
+xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+xhr.send("data=" + encodeURIComponent(data));
+
+xhr.onreadystatechange = function() {
+  if (xhr.readyState === 4 && xhr.status === 200) {
+    console.log("Data saved successfully!");
+  }
+};
+} else {
+  console.log("fucking crap nigga");
+}
 
 console.log(message);
  const existingElement = container.querySelector("p.w");

@@ -381,7 +381,7 @@ var nick = "Dexy";
 var bio = "My very beatiful bio as genshin no lifer";
 var UID = 78689798;
 
-
+var spId = "";
 
 var registered = localStorage.getItem("registered") === "true";
 
@@ -458,12 +458,14 @@ function signin() {
   .then(data => {
    
     data.forEach(account => {
-      console.log(`Nickname: ${account.nickname}, Password: ${account.password}, Bio: ${account.bio}, UID: ${account.UID}, pfp: ${account.pfp}`);
+      console.log(`Nickname: ${account.nickname}, Password: ${account.password}, Bio: ${account.bio}, UID: ${account.UID}, pfp: ${account.pfp}, ID: ${account.id}`);
+
       if (account.nickname === enteredUsername) {
-        console.log("found");
+      	
+        console.log("found" + account.id);
         finder = true;
         console.log(account.password);
-        neededPass = account.password
+        neededPass = account.password;
         	if (neededPass === enteredPassword) {
         		console.log("right password");
         		
@@ -472,8 +474,11 @@ function signin() {
 						nick = account.nickname;
 						bio = account.bio;
 						UID = account.UID;
-
+						spId = account.id;
+						console.log(spId);
             localStorage.setItem("registered", true);
+            localStorage.setItem("spId", spId);
+
             accountPage();
       
         	} else {
