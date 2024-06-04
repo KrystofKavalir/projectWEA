@@ -93,9 +93,18 @@ g2 - special genshin font
 
 <input type="text" id="account">
 <input type="password" id="password">
-<button onclick="logIn()">log</button>
-<span id="congrats" class="w"></span>
+<button onclick="logIn()">log</button><br>
+<span id="congrats" class="w"></span><br>
+<span id="pfp" class="w"></span><br>
+<span id="nick" class="w"></span><br>
+<span id="bio" class="w"></span><br>
+<span id="uid" class="w"></span><br>
 <script>
+var pfp = "";	
+var nick = "";
+var bio = "";
+var UID = "";
+
 
 	var nick = "nugr";
 
@@ -140,6 +149,17 @@ function logIn() {
         	if (neededPass === inputPass) {
         		console.log("right password");
         		document.getElementById('congrats').innerText = account.nickname + account.bio;
+
+        		pfp = account.pfp;	
+						nick = account.nickname;
+						bio = account.bio;
+						UID = account.UID;
+
+
+      document.getElementById("pfp").src = pfp;
+	  	document.getElementById('nick').innerText = nick;
+	  	document.getElementById('bio').innerText = bio;
+	  	document.getElementById('uid').innerHTML = "&nbsp;#" + UID;
         	} else {
         		console.log("wrong password");
         		alert("wrong password");
@@ -147,7 +167,7 @@ function logIn() {
       } else {
       	if (finder === false) {
       	console.log("account not found");
-      	alert("account not found");
+      	
 				} else {
 					console.log("try more");
 				}
