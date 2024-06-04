@@ -124,7 +124,7 @@ g2 - special genshin font
         <input type="password" id="password" autocomplete="current-password" style="width: 170%;"/>
       </div>
      </div> 
-		<button class="w3-button w3-display-middle pulse-button-orange" id="calculateBtn" onclick="signin()" style="font-family: g2; font-size: 200%; margin-top: 50px; color: white;">Log in</button>
+		<button class="w3-button w3-display-middle pulse-button-orange" id="calculateBtn, loginBtn" onclick="signin()" style="font-family: g2; font-size: 200%; margin-top: 50px; color: white;">Log in</button>
 		<div>
 			<button class="w3-button w3-display-bottommiddle pulse-button" onclick="signup()" style="font-family: g2; font-size: 200%; margin-bottom: 20px; margin-left: -20%; color: white;">SIGN UP</button>
 			<button class="w3-button w3-display-bottommiddle pulse-button-red" onclick="easterEggPass()" style="font-family: g2; font-size: 130%; margin-bottom: 20px; margin-left: 20%;color: white;">Forgot Password</button>
@@ -438,6 +438,18 @@ function signin() {
     localStorage.setItem("registered", true);
     accountPage();
     console.log("username: " + enteredUsername, "\nsuper secret password: " + enteredPassword);
+
+    var xhr = new XMLHttpRequest();
+    xhr.open("POST", "uklDoDtbse.php", true);
+    xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+    xhr.send("username=" + encodeURIComponent(enteredUsername) + "&password=" + encodeURIComponent(enteredPassword));
+
+    xhr.onreadystatechange = function() {
+        if (xhr.readyState === 4 && xhr.status === 200) {
+            console.log("Response from server: " + xhr.responseText);
+            
+        }
+    };
 }
 
 function goToData(currentPage) {
