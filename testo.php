@@ -91,11 +91,13 @@ g2 - special genshin font
 
  <p id="message"></p>
 
-
-
+<input type="text" id="account">
+<input type="password" id="password">
+<button onclick="logIn()">log</button>
+<span id="congrats" class="w"></span>
 <script>
 
-	
+	var nick = "nugr";
 
 	console.log("Xiao is the best twink ever <3");
 	
@@ -110,16 +112,44 @@ g2 - special genshin font
 }
 
 const messageElement = document.getElementById('message');
+var neededPass = "SecretCodeAll";
 
 
-fetch('datas.php')
+	
+
+	var nicke = document.getElementById("account");
+	var inputPasse = document.getElementById("password");
+
+function logIn() {
+
+	  var nick = nicke.value;
+    var inputPass = inputPasse.value;
+		console.log(nick + inputPass);
+
+		fetch('datas.php')
   .then(response => response.json())
   .then(data => {
+    // Process data here
     data.forEach(account => {
       console.log(`Nickname: ${account.nickname}, Password: ${account.password}, Bio: ${account.bio}, UID: ${account.UID}, pfp: ${account.pfp}`);
+      if (account.nickname === nick) {
+        console.log("found");
+        console.log(account.password);
+        var neededPass = account.password
+        	if (neededPass === inputPass) {
+        		console.log("right password");
+        		document.getElementById('congrats').innerText = account.nickname + account.bio;
+        	} else {
+        		console.log("wrong password");
+        	}
+      }
     });
+  })
+  .catch(error => {
+    console.error('Error fetching data:', error);
   });
 
+}
 
 </script>
 
