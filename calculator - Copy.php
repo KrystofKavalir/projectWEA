@@ -42,13 +42,31 @@ g2 - special genshin font
 			}
 
 			
+    body{
+      background-color: #36393e;
+      font-family: g1;
+      color: #b6b6b6;
+      user-select: none;
+      height: 100%;
+   overflow-y: hidden;
+    }
+    .no-scroll {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+}
+.log {
+      filter: blur(8px);
+    }
+        .loge {
+      font-size: 350%;
+  box-shadow: 0 0 0 0 transparent;
+ 
+    animation: pulse-orange 2s infinite;
 
-		body{
-			background-color: #36393e;
-			font-family: g1;
-			color: #b6b6b6;
-			user-select: none;
-		}
+}
 
 		.mainText {
 			padding-top: 160px;
@@ -61,7 +79,7 @@ g2 - special genshin font
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>Genshin Stats Forum</title>
 </head>
-<body class="w3-animate-opacity">
+<body class="w3-animate-opacity" id="body">
 
 <div class="w3-container header ">
 
@@ -79,6 +97,8 @@ g2 - special genshin font
 </h1>
 </div>
 <br>
+<div class="log" id="block">
+ 
 
     <div class="calc">
       <div class="input-group">
@@ -118,6 +138,8 @@ g2 - special genshin font
       </div>
   </div> <br>
   <button id="saveBtn" class="w3-hover-white pulse-button2 w3-hide w3-animate-opacity">SAVE DATA</button>
+</div>
+ <h1 id="loge" class="g1 w3-display-middle loge w3-show" onclick="window.location.href='account.php'">PLEASE LOGIN FIRST</h1>
 <style>
 	.calculator {
   
@@ -227,6 +249,18 @@ input {
 </style>
 
 <script>
+  var registered = localStorage.getItem("registered") === "true";
+  
+  if (registered === true) {
+  document.getElementById("body").classList.remove("no-scroll");
+  document.getElementById("loge").classList.remove("w3-show");
+  document.getElementById("loge").classList.add("w3-hide");
+  document.getElementById("block").classList.remove("log");
+  console.log("welcome");
+} else {
+  console.log("register please");
+  
+}
 
   const container = document.getElementById("kktina");
 
