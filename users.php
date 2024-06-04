@@ -226,7 +226,7 @@ g2 - special genshin font
       const info = document.createElement('div');
       info.innerHTML = `
         <p class="nick" onclick="goToData('users')">${userData.nickname}</p>
-        <p>UID: <g class="uid" id="${userData.UID}"> #${userData.UID}  </g></p> 
+       <p>UID: <g class="uid" id="${userData.id}" onclick="copyUIDToClipboard(event, '${userData.UID}')"> #${userData.UID} </g></p> 
         <p class="bio">${userData.bio}</p>
         <br>
       `;
@@ -234,6 +234,18 @@ g2 - special genshin font
 
       return item;
     }
+
+function copyUIDToClipboard(event, uidToCopy) {
+  
+
+  navigator.clipboard.writeText(uidToCopy)
+    .then(() => {
+      alert("UID " + uidToCopy + " was copied to your clipboard.");
+    })
+    .catch(err => {
+      console.error('picovina nejde: ', err);
+    });
+}
 </script>
 </body>
 </html>
