@@ -78,6 +78,8 @@ g2 - special genshin font
 				#grid-container {
 			width: 80%; 
 			padding-left: 50px;
+      display: flex; 
+  flex-wrap: wrap; 
     }
 
     .grid-item {
@@ -96,8 +98,11 @@ g2 - special genshin font
     }
 
      .grid-item img {
-      width: 100%;
+      width: 80%;
       height: auto;
+      border-radius: 15px;
+       margin: 0 auto;
+       margin-top: 20px;
     }
 
     .nick {
@@ -106,7 +111,7 @@ g2 - special genshin font
     }
 
     .uid {
-    	width: 750%;
+    	width: 850%;
     	
     	background-color: white;
     	color: black;
@@ -123,7 +128,10 @@ g2 - special genshin font
     	filter: blur(8px);
     }
 
-
+    .grid-item{
+      width: 250px;
+      height: 380px;
+    }
 
     .loge {
     	font-size: 350%;
@@ -190,79 +198,42 @@ g2 - special genshin font
   
 }
 
-  fetch('datas.php')
-  .then(response => response.json())
-  .then(data => {
-    data.forEach(account => {
-      console.log(`Nickname: ${account.nickname}, Bio: ${account.bio}, UID: ${account.UID}, pfp: ${account.pfp}`);
-    });
-  })
-  
+    const gridContainer = document.getElementById('grid-container');
 
-
-	function drpAn() {
-  var x = document.getElementById("none");
-  if (x.className.indexOf("w3-show") == -1) { 
-    x.className += " w3-show";
-  } else {
-    x.className = x.className.replace(" w3-show", "");
-  }
-}
-
-	const gridContainer = document.getElementById('grid-container');
-
-const preFilledData = {
-  nickname: 'User Data',
-  pfp: 'xiao.png', 
-  uid: '88888888',
-  bio: 'My very beatiful bio as genshin no lifer',
-};
-
-function generateGridItem(data) {
-  const item = document.createElement('div');
-  item.classList.add('grid-item');
-
-  const img = document.createElement('img');
-  img.src = data.pfp;
-  item.appendChild(img);
-
-  const info = document.createElement('div');
-  info.innerHTML = `
-    <p class="nick" onclick="goToData('users')">${data.nickname}</p>
-    <p>UID: <g class="uid" id="uid">&nbsp;#${data.uid}&nbsp;&nbsp;</g></p>
-    <p class="bio">${data.bio}</p>
-  `;
-  item.appendChild(info);
-
-  return item;
-}
-
-for (let i = 0; i < 50; i++) {
-  const gridItem = generateGridItem(preFilledData);
-  gridContainer.appendChild(gridItem);
-}
-
-function goToData(currentPage) {
-  localStorage.setItem("previousPage", currentPage); 
-  window.location.href = "data.php"; 
-}
-
-const items = document.querySelectorAll("#uid");
-
-items.forEach(item => {
-  item.addEventListener("click", function() {
-  	if (registered === true) {
-    const uid = this.id;
-    navigator.clipboard.writeText(uid)
-      .then(() => {
-        alert("UID " + "" + " was copied to your clipboard.");
+    
+    fetch('datas.php')
+      .then(response => {
+        return response.json();
       })
-      .catch(err => {
-        console.error("Failed to copy UID:", err);
-      });
-    } else {}
-  });
-});
+      .then(data => {
+        
+        data.forEach(user => {
+          const gridItem = generateGridItem(user);
+          gridContainer.appendChild(gridItem);
+        });
+      })
+      
+
+    function generateGridItem(userData) {
+      const item = document.createElement('div');
+      item.classList.add('grid-item');
+
+      const img = document.createElement('img');
+      img.src = userData.pfp; 
+      item.appendChild(img);
+
+
+      const info = document.createElement('div');
+      info.innerHTML = `
+        <p class="nick" onclick="goToData('users')">${userData.nickname}</p>
+        <p>UID: <g class="uid" id="${userData.UID}"> #${userData.UID}  </g></p> 
+        <p class="bio">${userData.bio}</p>
+        <br>
+      `;
+      item.appendChild(info);
+
+      return item;
+    }
 </script>
 </body>
 </html>
