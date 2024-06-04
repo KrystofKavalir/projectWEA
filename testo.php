@@ -129,7 +129,7 @@ function logIn() {
 		fetch('datas.php')
   .then(response => response.json())
   .then(data => {
-    // Process data here
+   
     data.forEach(account => {
       console.log(`Nickname: ${account.nickname}, Password: ${account.password}, Bio: ${account.bio}, UID: ${account.UID}, pfp: ${account.pfp}`);
       if (account.nickname === nick) {
