@@ -419,7 +419,7 @@ var registered = localStorage.getItem("registered") === "true";
     x.className = x.className.replace(" w3-show", "");
   }
 }
-
+var neededPass = "superSecretShit";	
 var username = document.getElementById("username");
 var password = document.getElementById("password");
 
@@ -435,11 +435,10 @@ var updatedPfp = document.getElementById("newPfp");
 function signin() {
     var enteredUsername = username.value;
     var enteredPassword = password.value;
-    localStorage.setItem("registered", true);
-    accountPage();
+    
     console.log("username: " + enteredUsername, "\nsuper secret password: " + enteredPassword);
 
-    var xhr = new XMLHttpRequest();
+    /*var xhr = new XMLHttpRequest();
     xhr.open("POST", "uklDoDtbse.php", true);
     xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
     xhr.send("username=" + encodeURIComponent(enteredUsername) + "&password=" + encodeURIComponent(enteredPassword));
@@ -449,7 +448,52 @@ function signin() {
             console.log("Response from server: " + xhr.responseText);
             
         }
-    };
+    };*/
+
+    
+		
+		let finder = false;
+		fetch('datas.php')
+  .then(response => response.json())
+  .then(data => {
+   
+    data.forEach(account => {
+      console.log(`Nickname: ${account.nickname}, Password: ${account.password}, Bio: ${account.bio}, UID: ${account.UID}, pfp: ${account.pfp}`);
+      if (account.nickname === enteredUsername) {
+        console.log("found");
+        finder = true;
+        console.log(account.password);
+        neededPass = account.password
+        	if (neededPass === enteredPassword) {
+        		console.log("right password");
+        		
+
+        		pfp = account.pfp;	
+						nick = account.nickname;
+						bio = account.bio;
+						UID = account.UID;
+
+            localStorage.setItem("registered", true);
+            accountPage();
+      
+        	} else {
+        		console.log("wrong password");
+        		alert("wrong password");
+        	}
+      } else {
+      	if (finder === false) {
+      	console.log("account not found");
+      	
+				} else {
+					console.log("try more");
+				}
+      }
+    });
+  })
+  .catch(error => {
+    console.error('Error fetching data:', error);
+  });
+
 }
 
 function goToData(currentPage) {
@@ -501,7 +545,11 @@ function register() {
 
     console.log("username: " + newUsername, "\npassword1: " + newPassword, "\npassword2: " + newPasswordConfirm);
 if (newPassword < 5 || newUsername < 5) {
+  if (registered = localStorage.getItem("registered") === "false") {
 	alert("Your username and password requires at least 5 characters");
+  } else {
+
+  }
 } else if (newPassword === newPasswordConfirm) {
     console.log("well done");
     localStorage.setItem("registered", true);
@@ -554,7 +602,7 @@ function accountPage() {
 			document.getElementById("pfp").src = pfp;
 	  	document.getElementById('nick').innerText = nick;
 	  	document.getElementById('bio').innerText = bio;
-	  	document.getElementById('uid').innerHtml = "&nbsp;#" + UID;
+	  	document.getElementById('uid').innerHTML = "&nbsp;#" + UID;
 
 	 	 document.getElementById("edit").classList.remove("w3-show");
 	 	 document.getElementById("edit").classList.add("w3-hide");
@@ -644,6 +692,8 @@ location.reload()
     document.getElementById("newBio").value = "";
     document.getElementById("newUID").value = "";
     document.getElementById("newPfp").value = "";
+    document.getElementById("edit").classList.remove("w3-show");
+	  document.getElementById("edit").classList.add("w3-hide");
 	}
 
 
