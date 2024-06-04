@@ -142,6 +142,8 @@ function logIn() {
         	} else {
         		console.log("wrong password");
         	}
+      } else {
+      	console.log("account not found");
       }
     });
   })
