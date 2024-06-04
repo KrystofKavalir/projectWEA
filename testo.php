@@ -125,7 +125,7 @@ function logIn() {
 	  var nick = nicke.value;
     var inputPass = inputPasse.value;
 		console.log(nick + inputPass);
-
+		let finder = false;
 		fetch('datas.php')
   .then(response => response.json())
   .then(data => {
@@ -134,6 +134,7 @@ function logIn() {
       console.log(`Nickname: ${account.nickname}, Password: ${account.password}, Bio: ${account.bio}, UID: ${account.UID}, pfp: ${account.pfp}`);
       if (account.nickname === nick) {
         console.log("found");
+        finder = true;
         console.log(account.password);
         var neededPass = account.password
         	if (neededPass === inputPass) {
@@ -141,9 +142,15 @@ function logIn() {
         		document.getElementById('congrats').innerText = account.nickname + account.bio;
         	} else {
         		console.log("wrong password");
+        		alert("wrong password");
         	}
       } else {
+      	if (finder === false) {
       	console.log("account not found");
+      	alert("account not found");
+				} else {
+					console.log("try more");
+				}
       }
     });
   })
