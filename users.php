@@ -190,6 +190,15 @@ g2 - special genshin font
   
 }
 
+  fetch('datas.php')
+  .then(response => response.json())
+  .then(data => {
+    data.forEach(account => {
+      console.log(`Nickname: ${account.nickname}, Bio: ${account.bio}, UID: ${account.UID}, pfp: ${account.pfp}`);
+    });
+  })
+  
+
 
 	function drpAn() {
   var x = document.getElementById("none");
