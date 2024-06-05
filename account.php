@@ -646,12 +646,13 @@ function easterEggPass() {
         
       } else {
         console.log("couldnt find acc");
-        alert("account wasnt found")
+        
       }
     });
   })
   .catch(error => {
     console.error('Error fetching data:', error);
+    alert("aaaaaaand the database just fucked itself in the ass once again...")
   });
 
 }
