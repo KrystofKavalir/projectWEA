@@ -517,7 +517,7 @@ function signin() {
         		} else {
         			pfp = account.pfp;	
         		}
-        		
+
 						nick = account.nickname;
 						bio = account.bio;
 						UID = account.UID;
@@ -724,6 +724,26 @@ location.reload()
     	console.log("update bio");
     	document.getElementById('bio').innerText = enteredBio;
 
+    	var data = JSON.stringify({ 
+    enteredBio: enteredBio, 
+    spId: spId 
+});
+
+var xhr = new XMLHttpRequest();
+xhr.open("POST", "uklBio.php", true);
+xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+xhr.send("data=" + encodeURIComponent(data));
+
+xhr.onreadystatechange = function() {
+    if (xhr.readyState === 4) {
+        if (xhr.status === 200) {
+            console.log("Data saved successfully!");
+        } else {
+            console.error("Error saving data:", xhr.status, xhr.responseText);
+        }
+    }
+};
+
     } else {
     	console.log("dont update bio");
     }
@@ -732,6 +752,25 @@ location.reload()
     	document.getElementById('uid').innerHTML =  "&nbsp;#" + enteredUID;
     	UID = enteredUID;
     	
+    	  	var data = JSON.stringify({ 
+    enteredUID: enteredUID, 
+    spId: spId 
+});
+
+var xhr = new XMLHttpRequest();
+xhr.open("POST", "uklUID.php", true);
+xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+xhr.send("data=" + encodeURIComponent(data));
+
+xhr.onreadystatechange = function() {
+    if (xhr.readyState === 4) {
+        if (xhr.status === 200) {
+            console.log("Data saved successfully!");
+        } else {
+            console.error("Error saving data:", xhr.status, xhr.responseText);
+        }
+    }
+};
 
     } else {
     	console.log("dont update uid");
@@ -739,6 +778,27 @@ location.reload()
     if (enteredPfp.length >= 2) {
     	console.log("update pfp");
     	document.getElementById('pfp').src = enteredPfp;
+
+    	    	  	var data = JSON.stringify({ 
+    enteredPfp: enteredPfp, 
+    spId: spId 
+});
+
+var xhr = new XMLHttpRequest();
+xhr.open("POST", "uklPfp.php", true);
+xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+xhr.send("data=" + encodeURIComponent(data));
+
+xhr.onreadystatechange = function() {
+    if (xhr.readyState === 4) {
+        if (xhr.status === 200) {
+            console.log("Data saved successfully!");
+        } else {
+            console.error("Error saving data:", xhr.status, xhr.responseText);
+        }
+    }
+};
+
 
     } else {
     	console.log("dont update pfp");
