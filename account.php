@@ -381,7 +381,7 @@ var nick = "Dexy";
 var bio = "My very beatiful bio as genshin no lifer";
 var UID = 78689798;
 
-var spId = "";
+var spId = localStorage.getItem("spId");
 
 var registered = localStorage.getItem("registered") === "true";
 
@@ -390,9 +390,51 @@ var registered = localStorage.getItem("registered") === "true";
 
 
 	if (registered === true) {
-  accountPage();
+  
   console.log("welcome");
+  	let finder = false;
+		fetch('datas.php')
+  .then(response => response.json())
+  .then(data => {
+   
+    data.forEach(account => {
+      console.log(`Nickname: ${account.nickname}, Password: ${account.password}, Bio: ${account.bio}, UID: ${account.UID}, pfp: ${account.pfp}, ID: ${account.id}`);
 
+      if (account.id === spId) {
+      	
+        console.log("found" + account.id);
+        finder = true;
+        console.log(account.password);
+        neededPass = account.password;
+        	
+        		if (account.pfp.length < 10) {
+        			pfp = "./empty.png";
+        		} else {
+        			pfp = account.pfp;	
+        		}
+
+        		
+						nick = account.nickname;
+						bio = account.bio;
+						UID = account.UID;
+						spId = account.id;
+						console.log(spId);
+            localStorage.setItem("registered", true);
+            localStorage.setItem("spId", spId);
+
+            accountPage();
+      
+        	
+      } else {
+      	if (finder === false) {
+      	console.log("account not found");
+      	
+				} else {
+					console.log("try more");
+				}
+      }
+    });
+  })
 	document.getElementById('uid').innerHTML = "&nbsp;#" + UID;
 } else {
   signinLoad();
@@ -470,7 +512,12 @@ function signin() {
         		console.log("right password");
         		
 
-        		pfp = account.pfp;	
+        		if (account.pfp.length < 10) {
+        			pfp = "./empty.png";
+        		} else {
+        			pfp = account.pfp;	
+        		}
+        		
 						nick = account.nickname;
 						bio = account.bio;
 						UID = account.UID;
@@ -624,6 +671,9 @@ function copyUID() {
 }
 
 	function editAcc() {
+
+		console.log(spId);
+
 		document.getElementById("signin").classList.remove("w3-show");
 	  document.getElementById("signin").classList.add("w3-hide");
 
