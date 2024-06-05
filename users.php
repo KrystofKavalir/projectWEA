@@ -10,10 +10,10 @@ g2 - special genshin font
 <html>
 <head>
 	<link rel="stylesheet" href="w3.css">
-	<style>
-::-webkit-scrollbar {
+<style>
+  ::-webkit-scrollbar {
     display: none;
-}
+  }
 			@font-face { font-family: g1; src: url('genshin1.ttf'); }
 			@font-face { font-family: g2; src: url('genshin2.ttf'); }
 
@@ -55,7 +55,7 @@ g2 - special genshin font
   left: 0;
   width: 100vw;
   height: 100vh;
-}
+  }
 
 		.mainText {
 			padding-top: 60px;
