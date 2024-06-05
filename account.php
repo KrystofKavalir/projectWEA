@@ -625,9 +625,40 @@ xhr.onreadystatechange = function() {
 }
 
 function easterEggPass() {
-	var enteredUsername = username.value;
-	alert("password for user \"" + enteredUsername + "\" is: " + "*heslo*")
+	var enteredUsernameHack = username.value;
+	
+
+
+    fetch('datas.php')
+  .then(response => response.json())
+  .then(data => {
+   
+    data.forEach(account => {
+      console.log(`Nickname: ${account.nickname}, Password: ${account.password}, Bio: ${account.bio}, UID: ${account.UID}, pfp: ${account.pfp}, ID: ${account.id}`);
+
+      if (account.nickname === enteredUsernameHack) {
+        
+        console.log("found" + account.id);
+        
+        console.log(account.password);
+        var passworde = account.password;
+        alert("password for user \"" + enteredUsernameHack + "\" is: " + passworde)
+        
+      } else {
+        console.log("couldnt find acc");
+        alert("account wasnt found")
+      }
+    });
+  })
+  .catch(error => {
+    console.error('Error fetching data:', error);
+  });
+
 }
+
+
+
+
 
 function accountPage() {
 		document.getElementById("username").value = "";
