@@ -206,7 +206,7 @@ g2 - special genshin font
             <div class="input-group ">
         <label for="password">Link for profile picture:</label>
         <input type="text" id="newPfp" autocomplete="new-password" style="width: 170%;"/>
-      </div>
+      </div>  
      </div> 
 		<button class="w3-button w3-display-middle pulse-button" id="calculateBtn" onclick="register(); update()" style="font-family: g2; font-size: 130%; margin-top: 180px; color: white;">save changes</button>
 </div>  

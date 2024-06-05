@@ -9,8 +9,8 @@ g2 - special genshin font
 <!DOCTYPE html>
 <html>
 <head>
-	<link rel="stylesheet" href="w3.css">
-	<style>
+<link rel="stylesheet" href="w3.css">
+<style>
 
 			@font-face { font-family: g1; src: url('genshin1.ttf'); }
 			@font-face { font-family: g2; src: url('genshin2.ttf'); }
@@ -47,7 +47,7 @@ g2 - special genshin font
 			padding-left: 50px;
 		}
 
-#background-video-container {
+  #background-video-container {
   position: fixed;
   top: 0;
   left: 0;
@@ -55,35 +55,35 @@ g2 - special genshin font
   height: 100%;
   overflow: hidden;
   z-index: -3; 
-}
+  }
 
-#background-video {
+  #background-video {
   min-width: 100%;
   min-height: 100%;
   object-fit: cover; 
-}
+  }
 
 
-.background-video-container {
+  .background-video-container {
     position: fixed;
     top: 0;
     left: 0;
     width: 100vw;
     height: 100vh;
     overflow: hidden;
-}
+  }
 
-.background-video {
+  .background-video {
     width: 100%;
     height: 100%;
     object-fit: cover;
-}
+  }
 
-main {
+  main {
     position: relative;
     z-index: 1; 
-}
-.header{
+  }
+  .header{
 			background-color: #1e2124!important;
 			color: #b6b6b6;
 			box-shadow: 0px 10px 10px 5px #282b30;
