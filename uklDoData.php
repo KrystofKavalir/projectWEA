@@ -34,12 +34,5 @@ if ($result->numRows > 0) {
   } else {
     die("Your passwords don't match!");
   }
-  
-
-
-
-
-
-
 
 ?>
