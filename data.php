@@ -142,25 +142,25 @@ function goBack() {
     window.location.href = previousPage + ".php"; 
     localStorage.removeItem("previousPage"); 
   } else {
-    // Handle no previous page scenario (optional)
+    
     alert("There's no previous page to go back to.");
   }
 }
 
 
-// HERE I USED AI BUT WE WILL DELETE THIS SHIT AND USE DATABASE DATA INSTEAD.
+
 
 function generateRandomData() {
   const data = [];
   for (let i = 0; i < 100; i++) {
     // Generate random values
-    const randomDate = new Date(Date.now() - Math.floor(Math.random() * 86400000) * 90); // 3 months in milliseconds
+    const randomDate = new Date(Date.now() - Math.floor(Math.random() * 16400000) * 90); 
     const avgDmg = Math.floor(Math.random() * (15000 - 1500)) + 1500;
     const dmgPer100 = avgDmg * 100;
     const maxDmg = Math.floor(avgDmg * 1.25);
     const minDmg = Math.floor(avgDmg * 0.75);
 
-    // Create data object
+  
     data.push({
       "date-calculated": randomDate.toLocaleDateString(),
       avgDmg,
@@ -175,15 +175,15 @@ function generateRandomData() {
 const randomData = generateRandomData();
 console.log(randomData);
 
-// Get the grid container element
+
 const gridContainer = document.getElementById("grid-container");
 
-// Loop through data and create grid items
+
 randomData.forEach((item) => {
   const gridItem = document.createElement("div");
   gridItem.classList.add("grid-item");
 
-  // Format and display data within grid item
+
   gridItem.innerHTML = `
     <p>Date: ${item["date-calculated"]}</p>
     <p>Avg Dmg: ${item.avgDmg}</p>
@@ -196,7 +196,7 @@ randomData.forEach((item) => {
 });
 
 function back() {
-	//window.location.href = "account.php";
+
 	
 }
 

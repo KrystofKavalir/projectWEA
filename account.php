@@ -193,7 +193,7 @@ g2 - special genshin font
 		<div class="w3-display-topmiddle" style="padding-top: 50px; margin-left: -10%;">
 		 <div class="input-group ">
         <label for="username">Nickname:</label>
-        <input type="text" id="newNick" autocomplete="username" style="width: 170%;" />
+        <input type="text" id="newNick" autocomplete="username" style="width: 170%;  cursor: not-allowed !important; color: grey;" disabled="disabled" />
       </div>
       <div class="input-group ">
         <label for="password">Bio:</label>
@@ -673,6 +673,8 @@ function copyUID() {
 	function editAcc() {
 
 		console.log(spId);
+    document.getElementById("newNick").value = nick;
+
 
 		document.getElementById("signin").classList.remove("w3-show");
 	  document.getElementById("signin").classList.add("w3-hide");
@@ -721,14 +723,15 @@ location.reload()
     	console.log("dont update nick");
     }
     if (enteredBio.length >= 2) {
-    	console.log("update bio");
+    	
     	document.getElementById('bio').innerText = enteredBio;
-
-    	var data = JSON.stringify({ 
+    	console.log("update bio" + spId);
+   	    	  	var data = JSON.stringify({ 
     enteredBio: enteredBio, 
     spId: spId 
 });
 
+console.log(data);
 var xhr = new XMLHttpRequest();
 xhr.open("POST", "uklBio.php", true);
 xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
