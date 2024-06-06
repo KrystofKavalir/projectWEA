@@ -376,10 +376,10 @@ input {
 </style>
 
 <script>
-var pfp = "./xiao.png";	
-var nick = "Dexy";
-var bio = "My very beatiful bio as genshin no lifer";
-var UID = 78689798;
+var pfp = "./empty.png";	
+var nick = " ";
+var bio = " ";
+var UID = " ";
 
 var spId = localStorage.getItem("spId");
 
@@ -622,6 +622,56 @@ xhr.onreadystatechange = function() {
     document.getElementById("newPasswordConfirm").value = "";
     alert("Your passwords don't match, try again.")
   }
+setTimeout(function(){
+    console.log("THIS IS");
+
+fetch('datas.php')
+  .then(response => response.json())
+  .then(data => {
+   
+    data.forEach(account => {
+      console.log(`Nickname: ${account.nickname}, Password: ${account.password}, Bio: ${account.bio}, UID: ${account.UID}, pfp: ${account.pfp}, ID: ${account.id}`);
+
+      if (account.nickname === newUsername) {
+        
+        console.log("found" + account.id);
+        
+        console.log(account.password);
+        
+            if (account.pfp.length < 10) {
+              pfp = "./empty.png";
+            } else {
+              pfp = account.pfp;  
+            }
+
+            nick = account.nickname;
+            bio = account.bio;
+            UID = account.UID;
+            spId = account.id;
+            console.log(spId);
+            localStorage.setItem("registered", true);
+            localStorage.setItem("spId", spId);
+
+            accountPage();
+      
+          
+      } else {
+        
+        console.log("account not found");
+        
+        
+        
+      }
+    });
+  })
+  .catch(error => {
+    console.error('Error fetching data:', error);
+  });
+
+
+}, 500);
+      
+
 }
 
 function easterEggPass() {

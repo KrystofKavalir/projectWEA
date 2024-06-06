@@ -89,6 +89,7 @@ g2 - special genshin font
 </div>
 <div class="mainText">
 <h1 class="g2" style="color: white;">FAQ</h1>
+
 <p class="damn g1">
 	<g class="texto extra">Genshin Damage Calculator: Frequently Asked Questions</g><br>
 Alright nerds, listen up! You got questions about our epic damage calculator? Buckle up your ass, cuz we got answers that are as savage as a Diluc main on a Tuesday. <br>
@@ -130,7 +131,7 @@ No black magic here, just complex algorithms (so basically black magic) crafted 
 
 
 
-
+<a href="dk.php" style="padding: 25px;"><h3 class="g2" style="padding-left: 50px;">CLICK HERE FOR CODE DOCUMENTATION</h3></a>
 <script>
 
 	console.log("Xiao is the best twink ever <3");

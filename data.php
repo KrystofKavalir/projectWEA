@@ -154,7 +154,7 @@ function generateRandomData() {
   const data = [];
   for (let i = 0; i < 100; i++) {
     // Generate random values
-    const randomDate = new Date(Date.now() - Math.floor(Math.random() * 16400000) * 90); 
+    const randomDate = new Date(Date.now() - Math.floor(Math.random() * 5400000) * 90); 
     const avgDmg = Math.floor(Math.random() * (15000 - 1500)) + 1500;
     const dmgPer100 = avgDmg * 100;
     const maxDmg = Math.floor(avgDmg * 1.25);
