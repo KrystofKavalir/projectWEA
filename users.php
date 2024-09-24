@@ -10,8 +10,10 @@ g2 - special genshin font
 <html>
 <head>
 	<link rel="stylesheet" href="w3.css">
-	<style>
-
+<style>
+  ::-webkit-scrollbar {
+    display: none;
+  }
 			@font-face { font-family: g1; src: url('genshin1.ttf'); }
 			@font-face { font-family: g2; src: url('genshin2.ttf'); }
 
@@ -43,6 +45,7 @@ g2 - special genshin font
 			user-select: none;
 			height: 100%;
    overflow-y: hidden;
+   
 
 		}
 
@@ -52,7 +55,7 @@ g2 - special genshin font
   left: 0;
   width: 100vw;
   height: 100vh;
-}
+  }
 
 		.mainText {
 			padding-top: 60px;
@@ -75,6 +78,8 @@ g2 - special genshin font
 				#grid-container {
 			width: 80%; 
 			padding-left: 50px;
+      display: flex; 
+  flex-wrap: wrap; 
     }
 
     .grid-item {
@@ -93,8 +98,11 @@ g2 - special genshin font
     }
 
      .grid-item img {
-      width: 100%;
+      width: 80%;
       height: auto;
+      border-radius: 15px;
+       margin: 0 auto;
+       margin-top: 20px;
     }
 
     .nick {
@@ -103,7 +111,7 @@ g2 - special genshin font
     }
 
     .uid {
-    	width: 750%;
+    	width: 850%;
     	
     	background-color: white;
     	color: black;
@@ -120,7 +128,10 @@ g2 - special genshin font
     	filter: blur(8px);
     }
 
-
+    .grid-item{
+      width: 250px;
+      height: 380px;
+    }
 
     .loge {
     	font-size: 350%;
@@ -147,15 +158,15 @@ g2 - special genshin font
 <body class="w3-animate-opacity no-scroll" id="body">
 
 <div class="w3-container header ">
-  <h1 onclick="window.location.href='frontend.html'" class="g2 header-text"><g class="main">GFC&nbsp;&nbsp;</g>forum
+  <h1 onclick="window.location.href='frontend.php'" class="g2 header-text"><g class="main">GFC&nbsp;&nbsp;</g>forum
 <g class="drop g1">&nbsp;&nbsp;&nbsp;&nbsp;
 <div class="w3-dropdown-hover w3-display-topright" style="font-size: 70%; margin-top: 20px; margin-right: 100px;">
-  <button onhover="drpAn()" class="w3-button w3-gray w3-hover-gray"><g style="color: white;"><a href="frontend.html" style="text-decoration: none;">&nbsp;&nbsp;&nbsp;Menu</a></g></button>
+  <button onhover="drpAn()" class="w3-button w3-gray w3-hover-gray"><g style="color: white;"><a href="frontend.php" style="text-decoration: none;">&nbsp;&nbsp;&nbsp;Menu</a></g></button>
   <div id="none" class="w3-dropdown-content w3-bar-block w3-animate-zoom">
-    <a href="account.html" class="w3-bar-item w3-button">Account</a>
-    <a href="calculator - copy.html" class="w3-bar-item w3-button">Calculator</a>
-    <a href="#" class="w3-bar-item w3-button">FAQ</a>
-    <a href="users.html" class="w3-bar-item w3-button"><b>Users</b></a>
+    <a href="account.php" class="w3-bar-item w3-button">Account</a>
+    <a href="calculator - copy.php" class="w3-bar-item w3-button">Calculator</a>
+    <a href="faq.php" class="w3-bar-item w3-button">FAQ</a>
+    <a href="users.php" class="w3-bar-item w3-button"><b>Users</b></a>
   </div>
 </g>
 </h1>
@@ -168,7 +179,7 @@ g2 - special genshin font
 </div>
 <div id="grid-container" class="g1"></div>
 </div>
-<h1 id="loge" class="g1 w3-display-middle loge w3-show" onclick="window.location.href='account.html'">PLEASE LOGIN FIRST</h1>
+<h1 id="loge" class="g1 w3-display-middle loge w3-show" onclick="window.location.href='account.php'">PLEASE LOGIN FIRST</h1>
 
 <script>
 
@@ -187,65 +198,54 @@ g2 - special genshin font
   
 }
 
+    const gridContainer = document.getElementById('grid-container');
 
-	function drpAn() {
-  var x = document.getElementById("none");
-  if (x.className.indexOf("w3-show") == -1) { 
-    x.className += " w3-show";
-  } else {
-    x.className = x.className.replace(" w3-show", "");
-  }
-}
-
-	const gridContainer = document.getElementById('grid-container');
-
-const preFilledData = {
-  nickname: 'User Data',
-  pfp: 'xiao.png', 
-  uid: '88888888',
-  bio: 'My very beatiful bio as genshin no lifer',
-};
-
-function generateGridItem(data) {
-  const item = document.createElement('div');
-  item.classList.add('grid-item');
-
-  const img = document.createElement('img');
-  img.src = data.pfp;
-  item.appendChild(img);
-
-  const info = document.createElement('div');
-  info.innerHTML = `
-    <p class="nick">${data.nickname}</p>
-    <p>UID: <g class="uid" id="uid">&nbsp;#${data.uid}&nbsp;&nbsp;</g></p>
-    <p class="bio">${data.bio}</p>
-  `;
-  item.appendChild(info);
-
-  return item;
-}
-
-for (let i = 0; i < 50; i++) {
-  const gridItem = generateGridItem(preFilledData);
-  gridContainer.appendChild(gridItem);
-}
-
-const items = document.querySelectorAll("#uid");
-
-items.forEach(item => {
-  item.addEventListener("click", function() {
-  	if (registered === true) {
-    const uid = this.id;
-    navigator.clipboard.writeText(uid)
-      .then(() => {
-        alert("UID " + "" + " was copied to your clipboard.");
+    
+    fetch('datas.php')
+      .then(response => {
+        return response.json();
       })
-      .catch(err => {
-        console.error("Failed to copy UID:", err);
-      });
-    } else {}
-  });
-});
+      .then(data => {
+        
+        data.forEach(user => {
+          const gridItem = generateGridItem(user);
+          gridContainer.appendChild(gridItem);
+        });
+      })
+      
+
+    function generateGridItem(userData) {
+      const item = document.createElement('div');
+      item.classList.add('grid-item');
+
+      const img = document.createElement('img');
+      img.src = userData.pfp; 
+      item.appendChild(img);
+
+
+      const info = document.createElement('div');
+      info.innerHTML = `
+        <p class="nick" onclick="goToData('users')">${userData.nickname}</p>
+       <p>UID: <g class="uid" id="${userData.id}" onclick="copyUIDToClipboard(event, '${userData.UID}')"> #${userData.UID} </g></p> 
+        <p class="bio">${userData.bio}</p>
+        <br>
+      `;
+      item.appendChild(info);
+
+      return item;
+    }
+
+function copyUIDToClipboard(event, uidToCopy) {
+  
+
+  navigator.clipboard.writeText(uidToCopy)
+    .then(() => {
+      alert("UID " + uidToCopy + " was copied to your clipboard.");
+    })
+    .catch(err => {
+      console.error('picovina nejde: ', err);
+    });
+}
 </script>
 </body>
 </html>

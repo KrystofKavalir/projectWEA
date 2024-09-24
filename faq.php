@@ -9,9 +9,11 @@ g2 - special genshin font
 <!DOCTYPE html>
 <html>
 <head>
-	<link rel="stylesheet" href="w3.css">
-	<style>
-
+<link rel="stylesheet" href="w3.css">
+<style>
+	::-webkit-scrollbar {
+    display: none;
+	}
 			@font-face { font-family: g1; src: url('genshin1.ttf'); }
 			@font-face { font-family: g2; src: url('genshin2.ttf'); }
 
@@ -70,15 +72,15 @@ g2 - special genshin font
 <body class="w3-animate-opacity">
 
 <div class="w3-container header ">
-  <h1 onclick="window.location.href='frontend.html'" class="g2 header-text"><g class="main">GFC&nbsp;&nbsp;</g>forum
+  <h1 onclick="window.location.href='frontend.php'" class="g2 header-text"><g class="main">GFC&nbsp;&nbsp;</g>forum
 <g class="drop g1">&nbsp;&nbsp;&nbsp;&nbsp;
 <div class="w3-dropdown-hover w3-display-topright" style="font-size: 70%; margin-top: 20px; margin-right: 100px;">
-  <button onhover="drpAn()" class="w3-button w3-gray w3-hover-gray"><g style="color: white;"><a href="frontend.html" style="text-decoration: none;">&nbsp;&nbsp;&nbsp;Menu</a></g></button>
+  <button onhover="drpAn()" class="w3-button w3-gray w3-hover-gray"><g style="color: white;"><a href="frontend.php" style="text-decoration: none;">&nbsp;&nbsp;&nbsp;Menu</a></g></button>
   <div id="none" class="w3-dropdown-content w3-bar-block w3-animate-zoom">
-    <a href="account.html" class="w3-bar-item w3-button">Account</a>
-    <a href="calculator - copy.html" class="w3-bar-item w3-button">Calculator</a>
-    <a href="#" class="w3-bar-item w3-button"><b>FAQ</b></a>
-    <a href="users.html" class="w3-bar-item w3-button">Users</a>
+    <a href="account.php" class="w3-bar-item w3-button">Account</a>
+    <a href="calculator - copy.php" class="w3-bar-item w3-button">Calculator</a>
+    <a href="faq.php" class="w3-bar-item w3-button"><b>FAQ</b></a>
+    <a href="users.php" class="w3-bar-item w3-button">Users</a>
   </div>
 </g>
 </h1>
@@ -87,6 +89,7 @@ g2 - special genshin font
 </div>
 <div class="mainText">
 <h1 class="g2" style="color: white;">FAQ</h1>
+
 <p class="damn g1">
 	<g class="texto extra">Genshin Damage Calculator: Frequently Asked Questions</g><br>
 Alright nerds, listen up! You got questions about our epic damage calculator? Buckle up your ass, cuz we got answers that are as savage as a Diluc main on a Tuesday. <br>
@@ -128,7 +131,7 @@ No black magic here, just complex algorithms (so basically black magic) crafted 
 
 
 
-
+<a href="dk.php" style="padding: 25px;"><h3 class="g2" style="padding-left: 50px;">CLICK HERE FOR CODE DOCUMENTATION</h3></a>
 <script>
 
 	console.log("Xiao is the best twink ever <3");

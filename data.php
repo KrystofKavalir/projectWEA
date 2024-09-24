@@ -90,15 +90,15 @@ g2 - special genshin font
 <body class="w3-animate-opacity" id="body">
 
 <div class="w3-container header ">
-  <h1 onclick="window.location.href='frontend.html'" class="g2 header-text"><g class="main">GFC&nbsp;&nbsp;</g>forum
+  <h1 onclick="window.location.href='frontend.php'" class="g2 header-text"><g class="main">GFC&nbsp;&nbsp;</g>forum
 <g class="drop g1">&nbsp;&nbsp;&nbsp;&nbsp;
 <div class="w3-dropdown-hover w3-display-topright" style="font-size: 70%; margin-top: 20px; margin-right: 100px;">
-  <button onhover="drpAn()" class="w3-button w3-gray w3-hover-gray"><g style="color: white;"><a href="frontend.html" style="text-decoration: none;">&nbsp;&nbsp;&nbsp;Menu</a></g></button>
+  <button onhover="drpAn()" class="w3-button w3-gray w3-hover-gray"><g style="color: white;"><a href="frontend.php" style="text-decoration: none;">&nbsp;&nbsp;&nbsp;Menu</a></g></button>
   <div id="none" class="w3-dropdown-content w3-bar-block w3-animate-zoom">
-    <a href="account.html" class="w3-bar-item w3-button">Account</a>
-    <a href="calculator - copy.html" class="w3-bar-item w3-button">Calculator</a>
-    <a href="faq.html" class="w3-bar-item w3-button">FAQ</a>
-    <a href="users.html" class="w3-bar-item w3-button">Users</a>
+    <a href="account.php" class="w3-bar-item w3-button">Account</a>
+    <a href="calculator - copy.php" class="w3-bar-item w3-button">Calculator</a>
+    <a href="faq.php" class="w3-bar-item w3-button">FAQ</a>
+    <a href="users.php" class="w3-bar-item w3-button">Users</a>
   </div>
 </g>
 </h1>
@@ -107,7 +107,7 @@ g2 - special genshin font
 </div>
 
 <div class="history w3-hide"></div>
-<div class="mainText" onclick="back()">
+<div class="mainText" onclick="back(); goBack()">
 <h1 class="g2" style="color: white;">←back</h1>
 </div>
 <div id="grid-container" class="g1"></div>
@@ -123,7 +123,7 @@ var registered = localStorage.getItem("registered") === "true";
   
 } else {
   console.log("register please");
-  window.location.href = "account.html";
+  window.location.href = "account.php";
 }
 	generateRandomData();
 
@@ -136,21 +136,31 @@ var registered = localStorage.getItem("registered") === "true";
   }
 }
 
+function goBack() {
+  const previousPage = localStorage.getItem("previousPage");
+  if (previousPage) {
+    window.location.href = previousPage + ".php"; 
+    localStorage.removeItem("previousPage"); 
+  } else {
+    
+    alert("There's no previous page to go back to.");
+  }
+}
 
 
-// HERE I USED AI BUT WE WILL DELETE THIS SHIT AND USE DATABASE DATA INSTEAD.
+
 
 function generateRandomData() {
   const data = [];
   for (let i = 0; i < 100; i++) {
     // Generate random values
-    const randomDate = new Date(Date.now() - Math.floor(Math.random() * 86400000) * 90); // 3 months in milliseconds
+    const randomDate = new Date(Date.now() - Math.floor(Math.random() * 5400000) * 90); 
     const avgDmg = Math.floor(Math.random() * (15000 - 1500)) + 1500;
     const dmgPer100 = avgDmg * 100;
     const maxDmg = Math.floor(avgDmg * 1.25);
     const minDmg = Math.floor(avgDmg * 0.75);
 
-    // Create data object
+  
     data.push({
       "date-calculated": randomDate.toLocaleDateString(),
       avgDmg,
@@ -165,15 +175,15 @@ function generateRandomData() {
 const randomData = generateRandomData();
 console.log(randomData);
 
-// Get the grid container element
+
 const gridContainer = document.getElementById("grid-container");
 
-// Loop through data and create grid items
+
 randomData.forEach((item) => {
   const gridItem = document.createElement("div");
   gridItem.classList.add("grid-item");
 
-  // Format and display data within grid item
+
   gridItem.innerHTML = `
     <p>Date: ${item["date-calculated"]}</p>
     <p>Avg Dmg: ${item.avgDmg}</p>
@@ -186,7 +196,7 @@ randomData.forEach((item) => {
 });
 
 function back() {
-	window.location.href = "account.html";
+
 	
 }
 

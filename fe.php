@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>401 Unauthorized Access</title>
+  <link href="/output.css" rel="stylesheet" />
+  <script src="https://kit.fontawesome.com/c4ffb2ea08.js" crossorigin="anonymous"></script>
+  <!--Muj font awesome-->
+  <!-- Primary Meta Tags -->
+  <link rel="icon" type="image/x-icon" href="/public/images/fishingicon_2nbg_mini.png">
+  <meta name="title" content="Fishing Simulator" />
+  <meta name="description"
+    content="Compete on leaderboards, collect valuable loot, and discover new items and fish for your inventory." />
+
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://fishing.honza.space/home" />
+  <meta property="og:title" content="Fishing Simulator" />
+  <meta property="og:description"
+    content="Compete on leaderboards, collect valuable loot, and discover new items and fish for your inventory." />
+  <meta property="og:image" content="https://fishing.honza.space/public/images/welcome_banner2.png" />
+
+  <!-- Twitter -->
+  <meta property="twitter:card" content="summary_large_image" />
+  <meta property="twitter:url" content="https://fishing.honza.space/home" />
+  <meta property="twitter:title" content="Fishing Simulator" />
+  <meta property="twitter:description"
+    content="Compete on leaderboards, collect valuable loot, and discover new items and fish for your inventory." />
+  <meta property="twitter:image" content="https://fishing.honza.space/public/images/welcome_banner2.png" />
+
+  <!-- Meta Tags Generated with https://metatags.io -->
+</head>
+
+<body
+  class="bg-fixed bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-gray-700 via-gray-900 to-black text-white">
+  <header class="bg-gray-800 p-4 shadow-lg">
+    <div class="container mx-auto flex flex-wrap items-center justify-between m-2">
+      <blockquote class="text-2xl font-semibold text-white mb-2 sm:mb-0">
+        <span
+          class="before:block before:absolute before:-inset-1 before:-skew-y-2 before:bg-gradient-to-r from-purple-900 to-blue-500 relative inline-block">
+          <span class="relative text-white">Skill issue</span>
+        </span>
+        <i class="fa-solid fa-square-xmark ml-1"></i>
+      </blockquote>
+      <nav class="w-full sm:w-auto">
+        <ul class="flex flex-col sm:flex-row sm:space-x-12 mt-1 mr-10">
+          <li class="mb-2 sm:mb-0">
+            <a href="/home" class="hover:text-blue-500">Home <i class="fa-solid fa-house ml-1"></i></a>
+          </li>
+          <li class="mb-2 sm:mb-0">
+            <a href="/register" class="hover:text-blue-500">Sign up <i class="fas fa-user-plus ml-1"></i></a>
+          </li>
+          <li class="mb-2 sm:mb-0">
+            <a href="/login" class="hover:text-blue-500">Login <i class="fa-solid fa-right-to-bracket ml-1"></i></a>
+          </li>
+          <li class="mb-2 sm:mb-0">
+            <a href="/mainpage" class="hover:text-blue-500">Fishing simulator <i class="fa-solid fa-fish ml-1"></i></a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+  <main class="flex-grow flex flex-col items-center justify-center text-center p-6">
+    <h1 class="text-2xl sm:text-3xl md:text-4xl text-white font-bold mb-4">
+      401 Unauthorized Access
+    </h1>
+    <img src="/public/images/401.png" alt="Minecraft 401 Unauthorized"
+      class="mx-auto h-auto w-64 sm:w-80 md:w-96 border-4 border-white rounded-lg shadow-lg mb-6" />
+    <p class="text-base sm:text-lg text-white mb-2">
+      Login to to access this page!
+    </p>
+    <p class="text-base sm:text-lg text-white mb-2">
+      It seems you don't have permission to fish here!
+    </p>
+    <div>
+      <button onclick="redirectToHome()"
+        class="w-full sm:w-64 md:w-96 flex justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">
+        Go back to safety
+      </button>
+    </div>
+  </main>
+  <script>
+    function redirectToHome() {
+      window.location.href = "/home";
+    }
+  </script>
+</body>
+
+</html>
